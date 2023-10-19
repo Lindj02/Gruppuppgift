@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gruppuppgift
 {
-    internal class Recipes
-    {
+
         public class Recept
         {
             public string Title { get; set; }
@@ -15,5 +14,5 @@ namespace Gruppuppgift
             public string PicturePatch { get; set; } // Länk till bilder
             public string Type { get; set; } // Typer av recept
         }
-    }
+    
 }

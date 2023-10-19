@@ -16,5 +16,5 @@ namespace Gruppuppgift
                 return inputUsername == Username && inputPassword == Password;
             }
         }
-    }
+    
 }
