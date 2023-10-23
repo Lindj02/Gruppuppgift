@@ -31,9 +31,14 @@ namespace Gruppuppgift
             }
         }
 
-        private void scrollbarK_Scroll(object sender, ScrollEventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        /* private void scrollbarK_Scroll(object sender, ScrollEventArgs e)
+         {
+
+         }*/
     }
 }
