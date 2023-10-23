@@ -45,6 +45,8 @@
             listBoxRecipe = new ListBox();
             pictureBoxRecipe = new PictureBox();
             txtTitle = new TextBox();
+            lblFoodlList = new Label();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -172,14 +174,15 @@
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(442, 23);
             comboBox.TabIndex = 15;
+            comboBox.SelectedIndexChanged += comboBox_SelectedIndexChanged;
             // 
             // listBoxRecipe
             // 
             listBoxRecipe.FormattingEnabled = true;
             listBoxRecipe.ItemHeight = 15;
-            listBoxRecipe.Location = new Point(323, 185);
+            listBoxRecipe.Location = new Point(323, 230);
             listBoxRecipe.Name = "listBoxRecipe";
-            listBoxRecipe.Size = new Size(625, 214);
+            listBoxRecipe.Size = new Size(625, 169);
             listBoxRecipe.TabIndex = 16;
             listBoxRecipe.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -193,16 +196,36 @@
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(323, 145);
+            txtTitle.Location = new Point(471, 182);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(625, 23);
+            txtTitle.Size = new Size(288, 23);
             txtTitle.TabIndex = 18;
+            // 
+            // lblFoodlList
+            // 
+            lblFoodlList.AutoSize = true;
+            lblFoodlList.Location = new Point(185, 137);
+            lblFoodlList.Name = "lblFoodlList";
+            lblFoodlList.Size = new Size(49, 15);
+            lblFoodlList.TabIndex = 19;
+            lblFoodlList.Text = "Matlista";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(261, 134);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(442, 23);
+            comboBox1.TabIndex = 20;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1548, 743);
+            Controls.Add(comboBox1);
+            Controls.Add(lblFoodlList);
             Controls.Add(txtTitle);
             Controls.Add(pictureBoxRecipe);
             Controls.Add(listBoxRecipe);
@@ -247,5 +270,7 @@
         private ListBox listBoxRecipe;
         private PictureBox pictureBoxRecipe;
         private TextBox txtTitle;
+        private Label lblFoodlList;
+        private ComboBox comboBox1;
     }
 }
