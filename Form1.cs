@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Windows.Forms;
 
 namespace Gruppuppgift
@@ -5,6 +6,7 @@ namespace Gruppuppgift
     public partial class Form1 : Form
     {
         private List<Recept> recepts;
+        private User user;
 
         List<string> categories = new List<string>
         {
@@ -23,6 +25,8 @@ namespace Gruppuppgift
             recepts = new List<Recept>();
             LoadDataFromFile();
             comboBox.Items.AddRange(categories.ToArray());
+            User user = new User(txtUserName.Text, txtPassword.Text);
+
         }
 
 
@@ -81,6 +85,47 @@ namespace Gruppuppgift
                 }
             }
         }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            string inputUsername = txtUserName.Text;
+            string inputPassword = txtPassword.Text;
+
+            user = new User(inputUsername, inputPassword);
+
+            if (user.Authenticate(inputUsername, inputPassword))
+            {
+                // 
+                btnAdd.Visible = true;
+                btnDelete.Visible = true;
+                btnUpdate.Visible = true;
+                btnLogout.Visible = true;
+                btnLogIn.Visible = false;
+                MessageBox.Show("Du är nu inloggad och kan ändra recept");
+                txtUserName.Text = "";
+                txtPassword.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Fel användarnamn eller lösenord. Försök igen.");
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (user != null)
+            {
+                user.Logout();
+
+                // Göm admin-knapparna
+                btnAdd.Visible = false;
+                btnDelete.Visible = false;
+                btnUpdate.Visible = false;
+                btnLogIn.Visible = true;
+                btnLogout.Visible = false;
+            }
+        }
+
 
         /* private void scrollbarK_Scroll(object sender, ScrollEventArgs e)
          {

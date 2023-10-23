@@ -6,15 +6,32 @@ using System.Threading.Tasks;
 
 namespace Gruppuppgift
 {
-        public class User
-        {
-            private const string Username = "admin";
-            private const string Password = "psw12345";
+    public class User
+    {
+        private const string AdminUsername = "admin";
+        private const string AdminPassword = "psw12345";
 
-            public bool Authenticate(string inputUsername, string inputPassword)
-            {
-                return inputUsername == Username && inputPassword == Password;
-            }
+        public bool IsAdmin { get; private set; }
+
+        
+        public User()
+        {
+            IsAdmin = false;
         }
-    
+        public void Logout()
+        {
+            IsAdmin = false;
+        }
+
+        
+        public User(string inputUsername, string inputPassword)
+        {
+            IsAdmin = Authenticate(inputUsername, inputPassword);
+        }
+
+        public bool Authenticate(string inputUsername, string inputPassword)
+        {
+            return inputUsername == AdminUsername && inputPassword == AdminPassword;
+        }
+    }
 }
