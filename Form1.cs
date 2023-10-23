@@ -72,7 +72,7 @@ namespace Gruppuppgift
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // När en rad väljs i comboBox1, visa informationen i listBoxRecipe.
+            // När en rad väljs i comboBox1, visas informationen i listBoxRecipe.
             string selectedRecipeTitle = comboBox1.SelectedItem.ToString();
             listBoxRecipe.Items.Clear();
             foreach (Recept recept in recepts)
@@ -123,6 +123,23 @@ namespace Gruppuppgift
                 btnUpdate.Visible = false;
                 btnLogIn.Visible = true;
                 btnLogout.Visible = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text;
+            listBoxRecipe.Items.Clear();
+
+            foreach (Recept recept in recepts)
+            {
+                if (recept.Title.Contains(searchTerm) || recept.Description.Contains(searchTerm) || recept.Type.Contains(searchTerm))
+                {
+                    listBoxRecipe.Items.Add("Titel: " + recept.Title);
+                    listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
+                    listBoxRecipe.Items.Add("Kategori: " + recept.Type);
+                    listBoxRecipe.Items.Add(""); // Lägg till en tom rad mellan varje recept
+                }
             }
         }
 
