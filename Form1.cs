@@ -1,29 +1,23 @@
 using Microsoft.VisualBasic.ApplicationServices;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Gruppuppgift
 {
     public partial class Form1 : Form
     {
-        private List<Recept> recepts;
+        private BindingList<Recept> receptsBindingList; 
         private User user;
 
-        List<string> categories = new List<string>
-        {
-            "Kött",
-            "Fisk",
-            "Sallader",
-            "Soppor",
-            "Desserter/Kakor",
-            "Vegetariskt",
-        };
+        HashSet<string> categories = new HashSet<string>();
 
 
         public Form1()
         {
             InitializeComponent();
-            recepts = new List<Recept>();
+            receptsBindingList = new BindingList<Recept>();
             LoadDataFromFile();
+            categories.Add("Alla kategorier");
             comboBox.Items.AddRange(categories.ToArray());
             User user = new User(txtUserName.Text, txtPassword.Text);
 
@@ -38,7 +32,6 @@ namespace Gruppuppgift
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string rad;
-
                 while ((rad = reader.ReadLine()) != null)
                 {
                     string[] columnNames = rad.Split('|');
@@ -47,7 +40,8 @@ namespace Gruppuppgift
                     string type = columnNames[2];
 
                     Recept recept = new Recept { Title = title, Description = description, Type = type };
-                    recepts.Add(recept);
+                    receptsBindingList.Add(recept);
+                    categories.Add(type);
                 }
             }
         }
@@ -57,32 +51,43 @@ namespace Gruppuppgift
 
         }
 
-        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+
+        public void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedCategory = comboBox.SelectedItem.ToString();
             comboBox1.Items.Clear();
-            foreach (Recept recept in recepts)
+
+            if (selectedCategory == "Alla kategorier")
             {
-                if (recept.Type == selectedCategory)
+                // om man vill se alla recept så loopar den igenom textfilen
+                foreach (Recept recept in receptsBindingList)
                 {
                     comboBox1.Items.Add(recept.Title);
+                }
+            }
+            else
+            {
+                // Visa receptet i valda kategorin
+                foreach (Recept recept in receptsBindingList)
+                {
+                    if (recept.Type == selectedCategory)
+                    {
+                        comboBox1.Items.Add(recept.Title);
+                    }
                 }
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // När en rad väljs i comboBox1, visas informationen i listBoxRecipe.
             string selectedRecipeTitle = comboBox1.SelectedItem.ToString();
-            listBoxRecipe.Items.Clear();
-            foreach (Recept recept in recepts)
+            dataGridView1.DataSource = null;
+
+            var selectedRecept = receptsBindingList.FirstOrDefault(recept => recept.Title == selectedRecipeTitle);
+
+            if (selectedRecept != null)
             {
-                if (recept.Title == selectedRecipeTitle)
-                {
-                    listBoxRecipe.Items.Add("Titel: " + recept.Title);
-                    listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
-                    listBoxRecipe.Items.Add("Kategori: " + recept.Type);
-                }
+                dataGridView1.DataSource = new BindingList<Recept> { selectedRecept };
             }
         }
 
@@ -131,7 +136,7 @@ namespace Gruppuppgift
             string searchTerm = txtSearch.Text;
             listBoxRecipe.Items.Clear();
 
-            foreach (Recept recept in recepts)
+            foreach (Recept recept in receptsBindingList)
             {
                 if (recept.Title.Contains(searchTerm) || recept.Description.Contains(searchTerm) || recept.Type.Contains(searchTerm))
                 {
