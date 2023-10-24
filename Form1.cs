@@ -143,6 +143,12 @@ namespace Gruppuppgift
             }
         }
 
+        // Öppnar form2.cs
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new Form2().ShowDialog();
+        }
+
 
         /* private void scrollbarK_Scroll(object sender, ScrollEventArgs e)
          {
