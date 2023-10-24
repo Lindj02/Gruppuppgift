@@ -48,6 +48,8 @@
             lblFoodlList = new Label();
             comboBox1 = new ComboBox();
             btnLogout = new Button();
+            label1 = new Label();
+            txtDescription1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -254,11 +256,30 @@
             btnLogout.Visible = false;
             btnLogout.Click += btnLogout_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1136, 282);
+            label1.Name = "label1";
+            label1.Size = new Size(84, 20);
+            label1.TabIndex = 22;
+            label1.Text = "Beskrivning";
+            // 
+            // txtDescription1
+            // 
+            txtDescription1.Location = new Point(1105, 312);
+            txtDescription1.Multiline = true;
+            txtDescription1.Name = "txtDescription1";
+            txtDescription1.Size = new Size(331, 221);
+            txtDescription1.TabIndex = 23;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1769, 991);
+            Controls.Add(txtDescription1);
+            Controls.Add(label1);
             Controls.Add(btnLogout);
             Controls.Add(comboBox1);
             Controls.Add(lblFoodlList);
@@ -310,5 +331,7 @@
         private Label lblFoodlList;
         private ComboBox comboBox1;
         private Button btnLogout;
+        private Label label1;
+        private TextBox txtDescription1;
     }
 }
