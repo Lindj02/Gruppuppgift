@@ -61,12 +61,12 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(461, 694);
-            dataGridView1.Margin = new Padding(4, 5, 4, 5);
+            dataGridView1.Location = new Point(369, 555);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(892, 424);
+            dataGridView1.Size = new Size(713, 339);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.RowHeaderMouseClick += dataGridView1_RowHeaderMouseClick;
@@ -74,12 +74,12 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(632, 1128);
-            btnAdd.Margin = new Padding(4, 5, 4, 5);
+            btnAdd.Location = new Point(505, 903);
+            btnAdd.Margin = new Padding(3, 4, 3, 4);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(129, 50);
+            btnAdd.Size = new Size(103, 40);
             btnAdd.TabIndex = 1;
-            btnAdd.Text = "Lägg till";
+            btnAdd.Text = "Rensa";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Visible = false;
             btnAdd.Click += btnAdd_Click;
@@ -87,10 +87,10 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(1206, 1128);
-            btnDelete.Margin = new Padding(4, 5, 4, 5);
+            btnDelete.Location = new Point(965, 903);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(129, 50);
+            btnDelete.Size = new Size(103, 40);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
@@ -98,56 +98,54 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(370, 16);
-            txtSearch.Margin = new Padding(4, 5, 4, 5);
+            txtSearch.Location = new Point(296, 13);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(630, 31);
+            txtSearch.Size = new Size(505, 27);
             txtSearch.TabIndex = 4;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(1994, 975);
-            txtUserName.Margin = new Padding(4, 5, 4, 5);
+            txtUserName.Location = new Point(1595, 780);
+            txtUserName.Margin = new Padding(3, 4, 3, 4);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(175, 31);
+            txtUserName.Size = new Size(141, 27);
             txtUserName.TabIndex = 6;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(1994, 1050);
-            txtPassword.Margin = new Padding(4, 5, 4, 5);
+            txtPassword.Location = new Point(1595, 840);
+            txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(175, 31);
+            txtPassword.Size = new Size(141, 27);
             txtPassword.TabIndex = 7;
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(1802, 980);
-            lblUserName.Margin = new Padding(4, 0, 4, 0);
+            lblUserName.Location = new Point(1441, 784);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(137, 25);
+            lblUserName.Size = new Size(112, 20);
             lblUserName.TabIndex = 8;
             lblUserName.Text = "Användarnamn:";
             // 
             // lblPassWord
             // 
             lblPassWord.AutoSize = true;
-            lblPassWord.Location = new Point(1850, 1055);
-            lblPassWord.Margin = new Padding(4, 0, 4, 0);
+            lblPassWord.Location = new Point(1480, 844);
             lblPassWord.Name = "lblPassWord";
-            lblPassWord.Size = new Size(90, 25);
+            lblPassWord.Size = new Size(73, 20);
             lblPassWord.TabIndex = 9;
             lblPassWord.Text = "Lösenord:";
             // 
             // btnLogIn
             // 
             btnLogIn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogIn.Location = new Point(1831, 1126);
-            btnLogIn.Margin = new Padding(4, 5, 4, 5);
+            btnLogIn.Location = new Point(1465, 901);
+            btnLogIn.Margin = new Padding(3, 4, 3, 4);
             btnLogIn.Name = "btnLogIn";
-            btnLogIn.Size = new Size(110, 50);
+            btnLogIn.Size = new Size(88, 40);
             btnLogIn.TabIndex = 10;
             btnLogIn.Text = "Logga in";
             btnLogIn.UseVisualStyleBackColor = true;
@@ -156,88 +154,85 @@
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(275, 21);
-            lblSearch.Margin = new Padding(4, 0, 4, 0);
+            lblSearch.Location = new Point(219, 17);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(68, 25);
+            lblSearch.Size = new Size(56, 20);
             lblSearch.TabIndex = 12;
             lblSearch.Text = "Search:";
             // 
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.Location = new Point(261, 100);
-            lblCategory.Margin = new Padding(4, 0, 4, 0);
+            lblCategory.Location = new Point(209, 80);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(82, 25);
+            lblCategory.Size = new Size(69, 20);
             lblCategory.TabIndex = 13;
             lblCategory.Text = "Kategori:";
             // 
             // comboBox
             // 
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new Point(370, 95);
-            comboBox.Margin = new Padding(4, 5, 4, 5);
+            comboBox.Location = new Point(296, 76);
+            comboBox.Margin = new Padding(3, 4, 3, 4);
             comboBox.Name = "comboBox";
-            comboBox.Size = new Size(630, 33);
+            comboBox.Size = new Size(505, 28);
             comboBox.TabIndex = 15;
             comboBox.SelectedIndexChanged += comboBox_SelectedIndexChanged;
             // 
             // listBoxRecipe
             // 
             listBoxRecipe.FormattingEnabled = true;
-            listBoxRecipe.ItemHeight = 25;
-            listBoxRecipe.Location = new Point(461, 384);
-            listBoxRecipe.Margin = new Padding(4, 5, 4, 5);
+            listBoxRecipe.ItemHeight = 20;
+            listBoxRecipe.Location = new Point(369, 307);
+            listBoxRecipe.Margin = new Padding(3, 4, 3, 4);
             listBoxRecipe.Name = "listBoxRecipe";
-            listBoxRecipe.Size = new Size(892, 279);
+            listBoxRecipe.Size = new Size(715, 224);
             listBoxRecipe.TabIndex = 16;
             listBoxRecipe.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // pictureBoxRecipe
             // 
-            pictureBoxRecipe.Location = new Point(18, 289);
-            pictureBoxRecipe.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxRecipe.Location = new Point(15, 231);
+            pictureBoxRecipe.Margin = new Padding(3, 4, 3, 4);
             pictureBoxRecipe.Name = "pictureBoxRecipe";
-            pictureBoxRecipe.Size = new Size(412, 500);
+            pictureBoxRecipe.Size = new Size(329, 400);
             pictureBoxRecipe.TabIndex = 17;
             pictureBoxRecipe.TabStop = false;
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(672, 304);
-            txtTitle.Margin = new Padding(4, 5, 4, 5);
+            txtTitle.Location = new Point(537, 243);
+            txtTitle.Margin = new Padding(3, 4, 3, 4);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(410, 31);
+            txtTitle.Size = new Size(329, 27);
             txtTitle.TabIndex = 18;
             // 
             // lblFoodlList
             // 
             lblFoodlList.AutoSize = true;
-            lblFoodlList.Location = new Point(261, 202);
-            lblFoodlList.Margin = new Padding(4, 0, 4, 0);
+            lblFoodlList.Location = new Point(209, 161);
             lblFoodlList.Name = "lblFoodlList";
-            lblFoodlList.Size = new Size(74, 25);
+            lblFoodlList.Size = new Size(62, 20);
             lblFoodlList.TabIndex = 19;
             lblFoodlList.Text = "Matlista";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(370, 192);
-            comboBox1.Margin = new Padding(4, 5, 4, 5);
+            comboBox1.Location = new Point(296, 153);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(630, 33);
+            comboBox1.Size = new Size(505, 28);
             comboBox1.TabIndex = 20;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // btnLogout
             // 
             btnLogout.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogout.Location = new Point(2054, 1126);
-            btnLogout.Margin = new Padding(4, 5, 4, 5);
+            btnLogout.Location = new Point(1643, 901);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(114, 50);
+            btnLogout.Size = new Size(91, 40);
             btnLogout.TabIndex = 21;
             btnLogout.Text = "Logga Ut";
             btnLogout.UseVisualStyleBackColor = true;
@@ -247,29 +242,26 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(1420, 352);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(1136, 281);
             label1.Name = "label1";
-            label1.Size = new Size(102, 25);
+            label1.Size = new Size(84, 20);
             label1.TabIndex = 22;
             label1.Text = "Beskrivning";
             // 
             // txtDescription1
             // 
-            txtDescription1.Location = new Point(1381, 390);
-            txtDescription1.Margin = new Padding(4);
+            txtDescription1.Location = new Point(1105, 312);
             txtDescription1.Multiline = true;
             txtDescription1.Name = "txtDescription1";
-            txtDescription1.Size = new Size(413, 275);
+            txtDescription1.Size = new Size(331, 221);
             txtDescription1.TabIndex = 23;
             // 
             // lblpicturePath
             // 
             lblpicturePath.AutoSize = true;
-            lblpicturePath.Location = new Point(294, 243);
-            lblpicturePath.Margin = new Padding(4, 0, 4, 0);
+            lblpicturePath.Location = new Point(235, 195);
             lblpicturePath.Name = "lblpicturePath";
-            lblpicturePath.Size = new Size(41, 25);
+            lblpicturePath.Size = new Size(35, 20);
             lblpicturePath.TabIndex = 24;
             lblpicturePath.Text = "Bild";
             lblpicturePath.Visible = false;
@@ -277,30 +269,31 @@
             // lblCat
             // 
             lblCat.AutoSize = true;
-            lblCat.Location = new Point(249, 149);
-            lblCat.Margin = new Padding(4, 0, 4, 0);
+            lblCat.Location = new Point(199, 119);
             lblCat.Name = "lblCat";
-            lblCat.Size = new Size(109, 25);
+            lblCat.Size = new Size(91, 20);
             lblCat.TabIndex = 26;
             lblCat.Text = "Ny Kategori:";
             lblCat.Visible = false;
             // 
             // txtCat
             // 
-            txtCat.Location = new Point(370, 149);
-            txtCat.Margin = new Padding(4, 5, 4, 5);
+            txtCat.Location = new Point(296, 119);
+            txtCat.Margin = new Padding(3, 4, 3, 4);
             txtCat.Name = "txtCat";
-            txtCat.Size = new Size(630, 31);
+            txtCat.Size = new Size(505, 27);
             txtCat.TabIndex = 27;
             txtCat.Visible = false;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(461, 1128);
+            btnSave.Location = new Point(369, 903);
+            btnSave.Margin = new Padding(2, 3, 2, 3);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(119, 50);
+            btnSave.Size = new Size(95, 40);
             btnSave.TabIndex = 0;
             btnSave.Text = "Spara";
+            btnSave.Visible = false;
             btnSave.Click += btnSave_Click_1;
             // 
             // openFileDialog1
@@ -309,9 +302,10 @@
             // 
             // btnOpenFIleDialog
             // 
-            btnOpenFIleDialog.Location = new Point(370, 243);
+            btnOpenFIleDialog.Location = new Point(296, 195);
+            btnOpenFIleDialog.Margin = new Padding(2, 3, 2, 3);
             btnOpenFIleDialog.Name = "btnOpenFIleDialog";
-            btnOpenFIleDialog.Size = new Size(166, 34);
+            btnOpenFIleDialog.Size = new Size(133, 27);
             btnOpenFIleDialog.TabIndex = 28;
             btnOpenFIleDialog.Text = "Ladda upp bild";
             btnOpenFIleDialog.UseVisualStyleBackColor = true;
@@ -320,9 +314,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2211, 1239);
+            ClientSize = new Size(1546, 1020);
             Controls.Add(btnOpenFIleDialog);
             Controls.Add(btnSave);
             Controls.Add(txtCat);
@@ -348,7 +342,7 @@
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dataGridView1);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

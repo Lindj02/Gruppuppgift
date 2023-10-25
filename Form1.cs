@@ -107,7 +107,7 @@ namespace Gruppuppgift
                 //btnUpdate.Visible = true;
                 btnLogout.Visible = true;
                 lblpicturePath.Visible = true;
-                txtpicturePath.Visible = true;
+
                 lblCat.Visible = true;
                 txtCat.Visible = true;
                 btnLogIn.Visible = false;
@@ -137,7 +137,7 @@ namespace Gruppuppgift
                 btnSave.Visible = false;
                 btnLogout.Visible = false;
                 lblpicturePath.Visible = false;
-                txtpicturePath.Visible = false;
+
                 lblCat.Visible = false;
                 txtCat.Visible = false;
             }
@@ -163,7 +163,9 @@ namespace Gruppuppgift
         // Öppnar form2.cs
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new Form2().ShowDialog();
+            txtTitle.Text = "";
+            txtDescription1.Text = "";
+            txtCat.Text = "";
         }
         public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
         {
