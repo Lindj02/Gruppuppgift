@@ -50,6 +50,10 @@
             btnLogout = new Button();
             label1 = new Label();
             txtDescription1 = new TextBox();
+            lblpicturePath = new Label();
+            txtpicturePath = new TextBox();
+            lblCat = new Label();
+            txtCat = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -104,7 +108,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(298, 68);
+            txtSearch.Location = new Point(296, 13);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(505, 27);
@@ -113,7 +117,7 @@
             // btnSearch
             // 
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSearch.Location = new Point(891, 59);
+            btnSearch.Location = new Point(889, 4);
             btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(103, 40);
@@ -171,7 +175,7 @@
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(222, 72);
+            lblSearch.Location = new Point(220, 17);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(56, 20);
             lblSearch.TabIndex = 12;
@@ -180,7 +184,7 @@
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.Location = new Point(211, 135);
+            lblCategory.Location = new Point(209, 80);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(69, 20);
             lblCategory.TabIndex = 13;
@@ -189,7 +193,7 @@
             // comboBox
             // 
             comboBox.FormattingEnabled = true;
-            comboBox.Location = new Point(298, 131);
+            comboBox.Location = new Point(296, 76);
             comboBox.Margin = new Padding(3, 4, 3, 4);
             comboBox.Name = "comboBox";
             comboBox.Size = new Size(505, 28);
@@ -227,7 +231,7 @@
             // lblFoodlList
             // 
             lblFoodlList.AutoSize = true;
-            lblFoodlList.Location = new Point(211, 183);
+            lblFoodlList.Location = new Point(209, 162);
             lblFoodlList.Name = "lblFoodlList";
             lblFoodlList.Size = new Size(62, 20);
             lblFoodlList.TabIndex = 19;
@@ -236,7 +240,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(298, 179);
+            comboBox1.Location = new Point(296, 154);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(505, 28);
@@ -273,11 +277,53 @@
             txtDescription1.Size = new Size(331, 221);
             txtDescription1.TabIndex = 23;
             // 
+            // lblpicturePath
+            // 
+            lblpicturePath.AutoSize = true;
+            lblpicturePath.Location = new Point(209, 198);
+            lblpicturePath.Name = "lblpicturePath";
+            lblpicturePath.Size = new Size(66, 20);
+            lblpicturePath.TabIndex = 24;
+            lblpicturePath.Text = "Bildkälla";
+            lblpicturePath.Visible = false;
+            // 
+            // txtpicturePath
+            // 
+            txtpicturePath.Location = new Point(296, 195);
+            txtpicturePath.Margin = new Padding(3, 4, 3, 4);
+            txtpicturePath.Name = "txtpicturePath";
+            txtpicturePath.Size = new Size(505, 27);
+            txtpicturePath.TabIndex = 25;
+            txtpicturePath.Visible = false;
+            // 
+            // lblCat
+            // 
+            lblCat.AutoSize = true;
+            lblCat.Location = new Point(199, 119);
+            lblCat.Name = "lblCat";
+            lblCat.Size = new Size(91, 20);
+            lblCat.TabIndex = 26;
+            lblCat.Text = "Ny Kategori:";
+            lblCat.Visible = false;
+            // 
+            // txtCat
+            // 
+            txtCat.Location = new Point(296, 119);
+            txtCat.Margin = new Padding(3, 4, 3, 4);
+            txtCat.Name = "txtCat";
+            txtCat.Size = new Size(505, 27);
+            txtCat.TabIndex = 27;
+            txtCat.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1769, 991);
+            Controls.Add(txtCat);
+            Controls.Add(lblCat);
+            Controls.Add(txtpicturePath);
+            Controls.Add(lblpicturePath);
             Controls.Add(txtDescription1);
             Controls.Add(label1);
             Controls.Add(btnLogout);
@@ -333,5 +379,9 @@
         private Button btnLogout;
         private Label label1;
         private TextBox txtDescription1;
+        private Label lblpicturePath;
+        private TextBox txtpicturePath;
+        private Label lblCat;
+        private TextBox txtCat;
     }
 }

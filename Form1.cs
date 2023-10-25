@@ -6,7 +6,7 @@ namespace Gruppuppgift
 {
     public partial class Form1 : Form
     {
-        private BindingList<Recept> receptsBindingList; 
+        private BindingList<Recept> receptsBindingList;
         private User user;
 
         HashSet<string> categories = new HashSet<string>();
@@ -105,6 +105,10 @@ namespace Gruppuppgift
                 btnDelete.Visible = true;
                 btnUpdate.Visible = true;
                 btnLogout.Visible = true;
+                lblpicturePath.Visible = true;
+                txtpicturePath.Visible = true;
+                lblCat.Visible = true;
+                txtCat.Visible = true;
                 btnLogIn.Visible = false;
                 MessageBox.Show("Du är nu inloggad och kan ändra recept");
                 txtUserName.Text = "";
@@ -128,6 +132,10 @@ namespace Gruppuppgift
                 btnUpdate.Visible = false;
                 btnLogIn.Visible = true;
                 btnLogout.Visible = false;
+                lblpicturePath.Visible = false;
+                txtpicturePath.Visible = false;
+                lblCat.Visible = false;
+                txtCat.Visible = false;
             }
         }
 
