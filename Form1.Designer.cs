@@ -67,6 +67,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(892, 424);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.RowHeaderMouseClick += dataGridView1_RowHeaderMouseClick;
             // 
             // btnAdd
@@ -303,15 +304,11 @@
             // 
             // btnSave
             // 
-            btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(461, 1126);
-            btnSave.Margin = new Padding(4, 5, 4, 5);
+            btnSave.Location = new Point(461, 1128);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(129, 50);
-            btnSave.TabIndex = 28;
+            btnSave.Size = new Size(119, 50);
+            btnSave.TabIndex = 0;
             btnSave.Text = "Spara";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Visible = false;
             btnSave.Click += btnSave_Click_1;
             // 
             // Form1

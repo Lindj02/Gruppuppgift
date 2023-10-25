@@ -1,5 +1,6 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Gruppuppgift
@@ -163,26 +164,64 @@ namespace Gruppuppgift
         {
             new Form2().ShowDialog();
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
         {
-
-        }
-
-        public void SaveRecept(string Titel, string Description, string Type)
-        {
-
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine($"{Titel}|{Description}|{Type}");
+                if (!string.IsNullOrEmpty(Type))
+                {
+                    writer.WriteLine($"{Titel}|{Description}|{Type}");
+                }
+                else if (!string.IsNullOrEmpty(selectedCategory))
+                {
+                    writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
+                }
             }
             MessageBox.Show("Du har sparat i textfilen!");
         }
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+          
 
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
-            SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text);
-        }
+        //}
+        //public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
+        //{
+        //    using (StreamWriter writer = new StreamWriter(filePath, true))
+        //    {
+        //        if (!string.IsNullOrEmpty(Type))
+        //        {
+        //            writer.WriteLine($"{Titel}|{Description}|{Type}");
+        //        }
+        //        else if (!string.IsNullOrEmpty(selectedCategory))
+        //        {
+        //            writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
+        //        }
+        //    }
+        //    MessageBox.Show("Du har sparat i textfilen!");
+        //}
+
+
+
+
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+        //}
+
+        //public void SaveRecept(string Titel, string Description, string Type)
+        //{
+
+        //    using (StreamWriter writer = new StreamWriter(filePath, true))
+        //    {
+        //        writer.WriteLine($"{Titel}|{Description}|{Type}");
+        //    }
+        //    MessageBox.Show("Du har sparat i textfilen!");
+        //}
+
+        //private void btnSave_Click_1(object sender, EventArgs e)
+        //{
+        //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text);
+        //}
 
         //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         //{
@@ -215,6 +254,18 @@ namespace Gruppuppgift
                 .ToList());
 
             dataGridView1.DataSource = filteredList;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            {
+                SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+            }
         }
 
         //private void btnUpdate_Click(object sender, EventArgs e)
