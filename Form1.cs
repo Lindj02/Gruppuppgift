@@ -205,6 +205,18 @@ namespace Gruppuppgift
             }
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.ToLower();
+
+
+            var filteredList = new BindingList<Recept>(receptsBindingList
+                .Where(x => x.Title.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || x.Type.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList());
+
+            dataGridView1.DataSource = filteredList;
+        }
+
         //private void btnUpdate_Click(object sender, EventArgs e)
         //{
         //    UpdateRecept(int rowIndex, string Titel, string Description, string Type)
