@@ -49,10 +49,11 @@
             label1 = new Label();
             txtDescription1 = new TextBox();
             lblpicturePath = new Label();
-            txtpicturePath = new TextBox();
             lblCat = new Label();
             txtCat = new TextBox();
             btnSave = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            btnOpenFIleDialog = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -265,22 +266,13 @@
             // lblpicturePath
             // 
             lblpicturePath.AutoSize = true;
-            lblpicturePath.Location = new Point(261, 248);
+            lblpicturePath.Location = new Point(294, 243);
             lblpicturePath.Margin = new Padding(4, 0, 4, 0);
             lblpicturePath.Name = "lblpicturePath";
-            lblpicturePath.Size = new Size(76, 25);
+            lblpicturePath.Size = new Size(41, 25);
             lblpicturePath.TabIndex = 24;
-            lblpicturePath.Text = "Bildkälla";
+            lblpicturePath.Text = "Bild";
             lblpicturePath.Visible = false;
-            // 
-            // txtpicturePath
-            // 
-            txtpicturePath.Location = new Point(370, 244);
-            txtpicturePath.Margin = new Padding(4, 5, 4, 5);
-            txtpicturePath.Name = "txtpicturePath";
-            txtpicturePath.Size = new Size(630, 31);
-            txtpicturePath.TabIndex = 25;
-            txtpicturePath.Visible = false;
             // 
             // lblCat
             // 
@@ -311,15 +303,30 @@
             btnSave.Text = "Spara";
             btnSave.Click += btnSave_Click_1;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnOpenFIleDialog
+            // 
+            btnOpenFIleDialog.Location = new Point(370, 243);
+            btnOpenFIleDialog.Name = "btnOpenFIleDialog";
+            btnOpenFIleDialog.Size = new Size(166, 34);
+            btnOpenFIleDialog.TabIndex = 28;
+            btnOpenFIleDialog.Text = "Ladda upp bild";
+            btnOpenFIleDialog.UseVisualStyleBackColor = true;
+            btnOpenFIleDialog.Visible = false;
+            btnOpenFIleDialog.Click += btnOpenFIleDialog_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2211, 1239);
+            Controls.Add(btnOpenFIleDialog);
             Controls.Add(btnSave);
             Controls.Add(txtCat);
             Controls.Add(lblCat);
-            Controls.Add(txtpicturePath);
             Controls.Add(lblpicturePath);
             Controls.Add(txtDescription1);
             Controls.Add(label1);
@@ -373,9 +380,10 @@
         private Label label1;
         private TextBox txtDescription1;
         private Label lblpicturePath;
-        private TextBox txtpicturePath;
         private Label lblCat;
         private TextBox txtCat;
         private Button btnSave;
+        private OpenFileDialog openFileDialog1;
+        private Button btnOpenFIleDialog;
     }
 }

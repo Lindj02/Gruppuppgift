@@ -112,6 +112,7 @@ namespace Gruppuppgift
                 txtCat.Visible = true;
                 btnLogIn.Visible = false;
                 btnSave.Visible = true;
+                btnOpenFIleDialog.Visible = true;
                 MessageBox.Show("Du är nu inloggad och kan ändra recept");
                 txtUserName.Text = "";
                 txtPassword.Text = "";
@@ -181,7 +182,7 @@ namespace Gruppuppgift
         }
         //private void btnSave_Click(object sender, EventArgs e)
         //{
-          
+
 
         //}
         //public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
@@ -265,6 +266,35 @@ namespace Gruppuppgift
         {
             {
                 SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+            }
+        }
+
+        private void txtpicturePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOpenFIleDialog_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // Set the initial directory to C:\
+                openFileDialog.InitialDirectory = "C:\\";
+
+                // Set the title of the dialog
+                openFileDialog.Title = "Open File";
+
+                // Filter for specific file types (optional)
+                openFileDialog.Filter = "All Files|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the selected file path
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    // Perform actions with the selected file
+                    MessageBox.Show("Selected file: " + selectedFilePath);
+                }
             }
         }
 
