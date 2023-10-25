@@ -54,6 +54,7 @@
             txtpicturePath = new TextBox();
             lblCat = new Label();
             txtCat = new TextBox();
+            btnSave = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -68,6 +69,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(714, 339);
             dataGridView1.TabIndex = 0;
+            dataGridView1.RowHeaderMouseClick += dataGridView1_RowHeaderMouseClick;
             // 
             // btnAdd
             // 
@@ -105,6 +107,7 @@
             btnUpdate.Text = "Uppdatera";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Visible = false;
+            //btnUpdate.Click += btnUpdate_Click;
             // 
             // txtSearch
             // 
@@ -315,11 +318,25 @@
             txtCat.TabIndex = 27;
             txtCat.Visible = false;
             // 
+            // btnSave
+            // 
+            btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSave.Location = new Point(359, 902);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(103, 40);
+            btnSave.TabIndex = 28;
+            btnSave.Text = "Spara";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Visible = false;
+            btnSave.Click += btnSave_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1769, 991);
+            Controls.Add(btnSave);
             Controls.Add(txtCat);
             Controls.Add(lblCat);
             Controls.Add(txtpicturePath);
@@ -383,5 +400,6 @@
         private TextBox txtpicturePath;
         private Label lblCat;
         private TextBox txtCat;
+        private Button btnSave;
     }
 }

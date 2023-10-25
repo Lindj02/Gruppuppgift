@@ -8,7 +8,7 @@ namespace Gruppuppgift
     {
         private BindingList<Recept> receptsBindingList;
         private User user;
-
+        string filePath = @"C:\Temp\Recept.txt";
         HashSet<string> categories = new HashSet<string>();
 
 
@@ -28,7 +28,7 @@ namespace Gruppuppgift
         private void LoadDataFromFile()
         {
 
-            string filePath = @"C:\Temp\Recept.txt";
+
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string rad;
@@ -110,6 +110,7 @@ namespace Gruppuppgift
                 lblCat.Visible = true;
                 txtCat.Visible = true;
                 btnLogIn.Visible = false;
+                btnSave.Visible = true;
                 MessageBox.Show("Du är nu inloggad och kan ändra recept");
                 txtUserName.Text = "";
                 txtPassword.Text = "";
@@ -131,6 +132,7 @@ namespace Gruppuppgift
                 btnDelete.Visible = false;
                 btnUpdate.Visible = false;
                 btnLogIn.Visible = true;
+                btnSave.Visible = false;
                 btnLogout.Visible = false;
                 lblpicturePath.Visible = false;
                 txtpicturePath.Visible = false;
@@ -162,10 +164,58 @@ namespace Gruppuppgift
             new Form2().ShowDialog();
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
 
-        /* private void scrollbarK_Scroll(object sender, ScrollEventArgs e)
-         {
+        }
 
-         }*/
+        public void SaveRecept(string Titel, string Description, string Type)
+        {
+
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                writer.WriteLine($"{Titel}|{Description}|{Type}");
+            }
+            MessageBox.Show("Du har sparat i textfilen!");
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text);
+        }
+
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0) // För att säkerställa att det inte är header-cell som klickas på
+        //    {
+        //        Recept selectedRecept = (Recept)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+        //        txtDescription1.Text = selectedRecept.Description;
+        //    }
+        //}
+
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0) // För att säkerställa att det inte är header-cell som klickas på
+            {
+                Recept selectedRecept = (Recept)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                if (selectedRecept != null)
+                {
+                    txtDescription1.Text = selectedRecept.Description;
+                }
+            }
+        }
+
+        //private void btnUpdate_Click(object sender, EventArgs e)
+        //{
+        //    UpdateRecept(int rowIndex, string Titel, string Description, string Type)
+        //}
+        //public void UpdateRecept(int rowIndex, string Titel, string Description, string Type)
+        //{
+        //string[] lines = File.ReadAllLines(filePath);
+        //lines[rowIndex] = $"{Titel},{Description},{Type}";
+        //File.WriteAllLines(filePath, lines);
+
+        //    LoadDataFromFile(); //Hämtar den senaste uppgifter från filen
+        //}
     }
 }
