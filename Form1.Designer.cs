@@ -95,6 +95,7 @@
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Visible = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // txtSearch
             // 

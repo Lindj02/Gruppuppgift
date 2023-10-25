@@ -163,10 +163,45 @@ namespace Gruppuppgift
         // Öppnar form2.cs
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            txtTitle.Text = "";
-            txtDescription1.Text = "";
-            txtCat.Text = "";
+            ClearTextBoxes();
         }
+        public void ClearTextBoxes()
+        {
+            txtTitle.Clear();
+            txtDescription1.Clear();
+            txtCat.Clear();
+
+            comboBox.Text = "";
+            comboBox1.Text = "";
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                Recept selectedRecept = (Recept)dataGridView1.SelectedRows[0].DataBoundItem;
+                if (selectedRecept != null)
+                {
+                    // Ta bort från binding list
+                    receptsBindingList.Remove(selectedRecept);
+
+                    // Skriv nu om hela filen med den uppdaterade listan
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                        foreach (Recept recept in receptsBindingList)
+                        {
+                            writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
+                        }
+                    }
+
+                    ClearTextBoxes();
+                }
+            }
+        }
+
+
+
         public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))
@@ -299,6 +334,7 @@ namespace Gruppuppgift
                 }
             }
         }
+
 
         //private void btnUpdate_Click(object sender, EventArgs e)
         //{
