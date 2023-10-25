@@ -103,7 +103,7 @@ namespace Gruppuppgift
                 // 
                 btnAdd.Visible = true;
                 btnDelete.Visible = true;
-                btnUpdate.Visible = true;
+                //btnUpdate.Visible = true;
                 btnLogout.Visible = true;
                 lblpicturePath.Visible = true;
                 txtpicturePath.Visible = true;
@@ -130,7 +130,7 @@ namespace Gruppuppgift
                 // Göm admin-knapparna
                 btnAdd.Visible = false;
                 btnDelete.Visible = false;
-                btnUpdate.Visible = false;
+                //btnUpdate.Visible = false;
                 btnLogIn.Visible = true;
                 btnSave.Visible = false;
                 btnLogout.Visible = false;

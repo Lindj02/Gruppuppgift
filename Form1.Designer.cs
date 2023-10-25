@@ -31,7 +31,6 @@
             dataGridView1 = new DataGridView();
             btnAdd = new Button();
             btnDelete = new Button();
-            btnUpdate = new Button();
             txtSearch = new TextBox();
             btnSearch = new Button();
             txtUserName = new TextBox();
@@ -74,7 +73,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(485, 901);
+            btnAdd.Location = new Point(506, 902);
             btnAdd.Margin = new Padding(3, 4, 3, 4);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(103, 40);
@@ -87,7 +86,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(680, 901);
+            btnDelete.Location = new Point(965, 902);
             btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(103, 40);
@@ -95,19 +94,6 @@
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Visible = false;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(902, 901);
-            btnUpdate.Margin = new Padding(3, 4, 3, 4);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(115, 40);
-            btnUpdate.TabIndex = 3;
-            btnUpdate.Text = "Uppdatera";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Visible = false;
-            //btnUpdate.Click += btnUpdate_Click;
             // 
             // txtSearch
             // 
@@ -321,7 +307,7 @@
             // btnSave
             // 
             btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(359, 902);
+            btnSave.Location = new Point(369, 901);
             btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(103, 40);
@@ -359,7 +345,6 @@
             Controls.Add(txtUserName);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
-            Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dataGridView1);
@@ -377,7 +362,6 @@
         private DataGridView dataGridView1;
         private Button btnAdd;
         private Button btnDelete;
-        private Button btnUpdate;
         private TextBox txtSearch;
         private Button btnSearch;
         private TextBox txtUserName;
