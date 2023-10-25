@@ -28,7 +28,7 @@ namespace Gruppuppgift
 
         private void LoadDataFromFile()
         {
-
+            receptsBindingList.Clear();
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -46,6 +46,7 @@ namespace Gruppuppgift
                 }
             }
         }
+
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -198,6 +199,7 @@ namespace Gruppuppgift
                     ClearTextBoxes();
                 }
             }
+            UpdateUI();
         }
 
 
@@ -216,6 +218,7 @@ namespace Gruppuppgift
                 }
             }
             MessageBox.Show("Du har sparat i textfilen!");
+            UpdateUI();
         }
         
 
@@ -252,6 +255,7 @@ namespace Gruppuppgift
         {
             {
                 SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+                LoadDataFromFile();
             }
         }
 
@@ -283,6 +287,17 @@ namespace Gruppuppgift
                 }
             }
         }
+
+        private void UpdateUI()
+        {
+            comboBox1.Items.Clear();
+            foreach (Recept recept in receptsBindingList)
+            {
+                comboBox1.Items.Add(recept.Title);
+            }
+            // ... andra uppdateringar som behövs för ditt UI ...
+        }
+
 
 
     }
