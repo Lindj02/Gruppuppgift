@@ -217,58 +217,7 @@ namespace Gruppuppgift
             }
             MessageBox.Show("Du har sparat i textfilen!");
         }
-        //private void btnSave_Click(object sender, EventArgs e)
-        //{
-
-
-        //}
-        //public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
-        //{
-        //    using (StreamWriter writer = new StreamWriter(filePath, true))
-        //    {
-        //        if (!string.IsNullOrEmpty(Type))
-        //        {
-        //            writer.WriteLine($"{Titel}|{Description}|{Type}");
-        //        }
-        //        else if (!string.IsNullOrEmpty(selectedCategory))
-        //        {
-        //            writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
-        //        }
-        //    }
-        //    MessageBox.Show("Du har sparat i textfilen!");
-        //}
-
-
-
-
-        //private void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
-        //}
-
-        //public void SaveRecept(string Titel, string Description, string Type)
-        //{
-
-        //    using (StreamWriter writer = new StreamWriter(filePath, true))
-        //    {
-        //        writer.WriteLine($"{Titel}|{Description}|{Type}");
-        //    }
-        //    MessageBox.Show("Du har sparat i textfilen!");
-        //}
-
-        //private void btnSave_Click_1(object sender, EventArgs e)
-        //{
-        //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text);
-        //}
-
-        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0) // För att säkerställa att det inte är header-cell som klickas på
-        //    {
-        //        Recept selectedRecept = (Recept)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-        //        txtDescription1.Text = selectedRecept.Description;
-        //    }
-        //}
+        
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -336,17 +285,5 @@ namespace Gruppuppgift
         }
 
 
-        //private void btnUpdate_Click(object sender, EventArgs e)
-        //{
-        //    UpdateRecept(int rowIndex, string Titel, string Description, string Type)
-        //}
-        //public void UpdateRecept(int rowIndex, string Titel, string Description, string Type)
-        //{
-        //string[] lines = File.ReadAllLines(filePath);
-        //lines[rowIndex] = $"{Titel},{Description},{Type}";
-        //File.WriteAllLines(filePath, lines);
-
-        //    LoadDataFromFile(); //Hämtar den senaste uppgifter från filen
-        //}
     }
 }
