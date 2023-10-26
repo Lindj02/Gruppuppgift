@@ -22,6 +22,9 @@ namespace Gruppuppgift
             comboBox.Items.AddRange(categories.ToArray());
             User user = new User(txtUserName.Text, txtPassword.Text);
 
+            // Sätt DataGridView's DataSource till receptsBindingList
+            dataGridView1.DataSource = receptsBindingList;
+
         }
 
 
@@ -58,10 +61,12 @@ namespace Gruppuppgift
         {
             string selectedCategory = comboBox.SelectedItem.ToString();
             comboBox1.Items.Clear();
+            BindingList<Recept> filteredRecepts;
 
             if (selectedCategory == "Alla kategorier")
             {
-                // om man vill se alla recept så loopar den igenom textfilen
+                // Visa alla recept
+                filteredRecepts = new BindingList<Recept>(receptsBindingList);
                 foreach (Recept recept in receptsBindingList)
                 {
                     comboBox1.Items.Add(recept.Title);
@@ -69,16 +74,20 @@ namespace Gruppuppgift
             }
             else
             {
-                // Visa receptet i valda kategorin
-                foreach (Recept recept in receptsBindingList)
+                // Filtrera recept baserat på kategori
+                filteredRecepts = new BindingList<Recept>(
+                    receptsBindingList.Where(recept => recept.Type == selectedCategory).ToList()
+                );
+                foreach (Recept recept in filteredRecepts)
                 {
-                    if (recept.Type == selectedCategory)
-                    {
-                        comboBox1.Items.Add(recept.Title);
-                    }
+                    comboBox1.Items.Add(recept.Title);
                 }
             }
+
+            // Uppdatera DataGridView med filtrerade recept
+            dataGridView1.DataSource = filteredRecepts;
         }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -105,7 +114,7 @@ namespace Gruppuppgift
                 // 
                 btnAdd.Visible = true;
                 btnDelete.Visible = true;
-                //btnUpdate.Visible = true;
+                
                 btnLogout.Visible = true;
                 lblpicturePath.Visible = true;
 
@@ -133,7 +142,7 @@ namespace Gruppuppgift
                 // Göm admin-knapparna
                 btnAdd.Visible = false;
                 btnDelete.Visible = false;
-                //btnUpdate.Visible = false;
+                
                 btnLogIn.Visible = true;
                 btnSave.Visible = false;
                 btnLogout.Visible = false;
@@ -156,7 +165,7 @@ namespace Gruppuppgift
                     listBoxRecipe.Items.Add("Titel: " + recept.Title);
                     listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
                     listBoxRecipe.Items.Add("Kategori: " + recept.Type);
-                    listBoxRecipe.Items.Add(""); // Lägg till en tom rad mellan varje recept
+                    listBoxRecipe.Items.Add(""); // Lägger till en tom rad mellan varje recept
                 }
             }
         }
@@ -166,15 +175,14 @@ namespace Gruppuppgift
         {
             ClearTextBoxes();
         }
-        public void ClearTextBoxes()
+        private void ClearTextBoxes()
         {
             txtTitle.Clear();
             txtDescription1.Clear();
             txtCat.Clear();
 
-            comboBox.Text = "";
-            comboBox1.Text = "";
-
+            // Rensa även valt recept för att undvika oavsiktlig redigering
+            selectedRecept = null;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -199,6 +207,7 @@ namespace Gruppuppgift
                     ClearTextBoxes();
                 }
             }
+            MessageBox.Show("Du har raderat receptet!");
             UpdateUI();
         }
 
@@ -217,19 +226,21 @@ namespace Gruppuppgift
                     writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
                 }
             }
-            MessageBox.Show("Du har sparat i textfilen!");
+            MessageBox.Show("Du har sparat ett nytt recept");
             UpdateUI();
         }
-        
+        private Recept selectedRecept;
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0) // För att säkerställa att det inte är header-cell som klickas på
+            if (e.RowIndex >= 0)
             {
-                Recept selectedRecept = (Recept)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                selectedRecept = (Recept)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                 if (selectedRecept != null)
                 {
+                    txtTitle.Text = selectedRecept.Title;
                     txtDescription1.Text = selectedRecept.Description;
+                    txtCat.Text = selectedRecept.Type;
                 }
             }
         }
@@ -253,10 +264,27 @@ namespace Gruppuppgift
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
+            if (selectedRecept != null)
             {
-                SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
-                LoadDataFromFile();
+                // Uppdatera det valda receptet
+                selectedRecept.Title = txtTitle.Text;
+                selectedRecept.Description = txtDescription1.Text;
+                selectedRecept.Type = txtCat.Text;
+
+                // Skriv om filen
+                WriteDataToFile();
+
+                MessageBox.Show("Receptet har uppdaterats!");
             }
+            else
+            {
+                // Skapa ett nytt recept
+                SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+                MessageBox.Show("Ett nytt recept har lagts till!");
+            }
+
+            LoadDataFromFile();
+            UpdateUI();
         }
 
         private void txtpicturePath_TextChanged(object sender, EventArgs e)
@@ -287,9 +315,22 @@ namespace Gruppuppgift
                 }
             }
         }
-
+        private void WriteDataToFile()
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (Recept recept in receptsBindingList)
+                {
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
+                }
+            }
+        }
         private void UpdateUI()
         {
+            // Uppdatera DataGridView
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = receptsBindingList;
+
             comboBox1.Items.Clear();
             foreach (Recept recept in receptsBindingList)
             {
@@ -297,6 +338,7 @@ namespace Gruppuppgift
             }
             // ... andra uppdateringar som behövs för ditt UI ...
         }
+    
 
 
 
