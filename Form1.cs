@@ -170,7 +170,7 @@ namespace Gruppuppgift
             }
         }
 
-        // Öppnar form2.cs
+        // Öppnar form2.cs, obs används inte längre. Eventuellt använda sig av det när gör nytt recept.
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearTextBoxes();
@@ -302,15 +302,15 @@ namespace Gruppuppgift
                 // Set the title of the dialog
                 openFileDialog.Title = "Open File";
 
-                // Filter for specific file types (optional)
+                
                 openFileDialog.Filter = "All Files|*.*";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Get the selected file path
+                    
                     string selectedFilePath = openFileDialog.FileName;
 
-                    // Perform actions with the selected file
+                    
                     MessageBox.Show("Selected file: " + selectedFilePath);
                 }
             }
@@ -336,7 +336,7 @@ namespace Gruppuppgift
             {
                 comboBox1.Items.Add(recept.Title);
             }
-            // ... andra uppdateringar som behövs för ditt UI ...
+            
         }
     
 
