@@ -95,7 +95,7 @@
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Visible = false;
-            btnDelete.Click += btnDelete_Click;
+           // btnDelete.Click += btnDelete_Click;
             // 
             // txtSearch
             // 
@@ -150,7 +150,7 @@
             btnLogIn.TabIndex = 10;
             btnLogIn.Text = "Logga in";
             btnLogIn.UseVisualStyleBackColor = true;
-            btnLogIn.Click += btnLogIn_Click;
+            //btnLogIn.Click += btnLogIn_Click;
             // 
             // lblSearch
             // 
@@ -317,7 +317,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1546, 1020);
+            ClientSize = new Size(1852, 1020);
             Controls.Add(btnOpenFIleDialog);
             Controls.Add(btnSave);
             Controls.Add(txtCat);
@@ -354,15 +354,13 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Button btnAdd;
-        private Button btnDelete;
+        internal DataGridView dataGridView1;
+        internal Button btnAdd;
         private TextBox txtSearch;
-        private TextBox txtUserName;
-        private TextBox txtPassword;
-        private Label lblUserName;
+        internal TextBox txtUserName;
+        internal TextBox txtPassword;
+        internal Label lblUserName;
         private Label lblPassWord;
-        private Button btnLogIn;
         private Label lblSearch;
         private Label lblCategory;
         private ComboBox comboBox;
@@ -371,14 +369,16 @@
         private TextBox txtTitle;
         private Label lblFoodlList;
         private ComboBox comboBox1;
-        private Button btnLogout;
+        internal Button btnLogout;
         private Label label1;
         private TextBox txtDescription1;
-        private Label lblpicturePath;
-        private Label lblCat;
-        private TextBox txtCat;
-        private Button btnSave;
+        internal Label lblpicturePath;
+        internal Label lblCat;
+        internal TextBox txtCat;
+        internal Button btnSave;
         private OpenFileDialog openFileDialog1;
-        private Button btnOpenFIleDialog;
+        internal Button btnOpenFIleDialog;
+        internal Button btnDelete;
+        internal Button btnLogIn;
     }
 }

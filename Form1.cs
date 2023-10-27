@@ -9,7 +9,7 @@ namespace Gruppuppgift
     {
         private BindingList<Recept> receptsBindingList;
         private User user;
-        string filePath = @"C:\Temp\Recept.txt";
+        public string filePath = @"C:\Temp\Recept.txt";
         HashSet<string> categories = new HashSet<string>();
 
 
@@ -20,7 +20,7 @@ namespace Gruppuppgift
             LoadDataFromFile();
             categories.Add("Alla kategorier");
             comboBox.Items.AddRange(categories.ToArray());
-            User user = new User(txtUserName.Text, txtPassword.Text);
+            new ReceptController(this, receptsBindingList);
 
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
@@ -124,36 +124,10 @@ namespace Gruppuppgift
             }
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
-        {
-            string inputUsername = txtUserName.Text;
-            string inputPassword = txtPassword.Text;
+       // private void btnLogIn_Click(object sender, EventArgs e)
+        //{
 
-            user = new User(inputUsername, inputPassword);
-
-            if (user.Authenticate(inputUsername, inputPassword))
-            {
-                // 
-                btnAdd.Visible = true;
-                btnDelete.Visible = true;
-                
-                btnLogout.Visible = true;
-                lblpicturePath.Visible = true;
-
-                lblCat.Visible = true;
-                txtCat.Visible = true;
-                btnLogIn.Visible = false;
-                btnSave.Visible = true;
-                btnOpenFIleDialog.Visible = true;
-                MessageBox.Show("Du är nu inloggad och kan ändra recept");
-                txtUserName.Text = "";
-                txtPassword.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Fel användarnamn eller lösenord. Försök igen.");
-            }
-        }
+       // }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -164,7 +138,7 @@ namespace Gruppuppgift
                 // Göm admin-knapparna
                 btnAdd.Visible = false;
                 btnDelete.Visible = false;
-                
+
                 btnLogIn.Visible = true;
                 btnSave.Visible = false;
                 btnLogout.Visible = false;
@@ -207,31 +181,10 @@ namespace Gruppuppgift
             selectedRecept = null;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                Recept selectedRecept = (Recept)dataGridView1.SelectedRows[0].DataBoundItem;
-                if (selectedRecept != null)
-                {
-                    // Ta bort från binding list
-                    receptsBindingList.Remove(selectedRecept);
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
 
-                    // Skriv nu om hela filen med den uppdaterade listan
-                    using (StreamWriter writer = new StreamWriter(filePath))
-                    {
-                        foreach (Recept recept in receptsBindingList)
-                        {
-                            writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
-                        }
-                    }
-
-                    ClearTextBoxes();
-                }
-            }
-            MessageBox.Show("Du har raderat receptet!");
-            UpdateUI();
-        }
+        //}
 
 
 
@@ -324,15 +277,15 @@ namespace Gruppuppgift
                 // Set the title of the dialog
                 openFileDialog.Title = "Open File";
 
-                
+
                 openFileDialog.Filter = "All Files|*.*";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     string selectedFilePath = openFileDialog.FileName;
 
-                    
+
                     MessageBox.Show("Selected file: " + selectedFilePath);
                 }
             }
@@ -347,7 +300,7 @@ namespace Gruppuppgift
                 }
             }
         }
-        private void UpdateUI()
+        internal void UpdateUI()
         {
             // Uppdatera DataGridView
             dataGridView1.DataSource = null;
@@ -358,9 +311,9 @@ namespace Gruppuppgift
             {
                 comboBox1.Items.Add(recept.Title);
             }
-            
+
         }
-    
+
 
 
 
