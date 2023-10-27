@@ -31,22 +31,44 @@ namespace Gruppuppgift
 
         private void LoadDataFromFile()
         {
-            receptsBindingList.Clear();
-
-            using (StreamReader reader = new StreamReader(filePath))
+            try
             {
-                string rad;
-                while ((rad = reader.ReadLine()) != null)
-                {
-                    string[] columnNames = rad.Split('|');
-                    string title = columnNames[0];
-                    string description = columnNames[1];
-                    string type = columnNames[2];
+                receptsBindingList.Clear();
 
-                    Recept recept = new Recept { Title = title, Description = description, Type = type };
-                    receptsBindingList.Add(recept);
-                    categories.Add(type);
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string rad;
+                    while ((rad = reader.ReadLine()) != null)
+                    {
+                        string[] columnNames = rad.Split('|');
+                        string title = columnNames[0];
+                        string description = columnNames[1];
+                        string type = columnNames[2];
+
+                        Recept recept = new Recept { Title = title, Description = description, Type = type };
+                        receptsBindingList.Add(recept);
+                        categories.Add(type);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                MessageBox.Show("Ett fel uppstod vid inläsning av filen.");
+            }
+        }
+        private void LogError(Exception ex)
+        {
+            string logFilePath = @"C:\Temp\ErrorLog.txt";
+            string errorMessage = $"{DateTime.Now}: {ex.Message}";
+
+            try
+            {
+                File.AppendAllText(logFilePath, errorMessage + Environment.NewLine);
+            }
+            catch
+            {
+                // Hantering om loggfilen inte går att skriva till.
             }
         }
 
