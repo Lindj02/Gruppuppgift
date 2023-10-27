@@ -9,7 +9,7 @@ namespace Gruppuppgift
     {
         private BindingList<Recept> receptsBindingList;
         private User user;
-        public string filePath = @"C:\Temp\Recept.txt";
+        public string filePath = @"..\..\..\recept.txt";
         HashSet<string> categories = new HashSet<string>();
 
 
@@ -21,7 +21,7 @@ namespace Gruppuppgift
             categories.Add("Alla kategorier");
             comboBox.Items.AddRange(categories.ToArray());
             new ReceptController(this, receptsBindingList);
-
+            this.WindowState = FormWindowState.Maximized;
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
 
@@ -59,7 +59,7 @@ namespace Gruppuppgift
         }
         private void LogError(Exception ex)
         {
-            string logFilePath = @"C:\Temp\ErrorLog.txt";
+            string logFilePath = @"..\..\..\ErrorLog.txt";
             string errorMessage = $"{DateTime.Now}: {ex.Message}";
 
             try
@@ -171,7 +171,7 @@ namespace Gruppuppgift
         {
             ClearTextBoxes();
         }
-        private void ClearTextBoxes()
+        public void ClearTextBoxes()
         {
             txtTitle.Clear();
             txtDescription1.Clear();
@@ -201,7 +201,7 @@ namespace Gruppuppgift
                     writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
                 }
             }
-            MessageBox.Show("Du har sparat ett nytt recept");
+            //MessageBox.Show("Du har sparat ett nytt recept");
             UpdateUI();
         }
         private Recept selectedRecept;
@@ -311,6 +311,7 @@ namespace Gruppuppgift
             {
                 comboBox1.Items.Add(recept.Title);
             }
+
 
         }
 

@@ -1,0 +1,22 @@
+Biff Stroganoff|En härlig rätt med biff, lök, champinjoner och gräddfil.|Kött
+Köttbullar|Små, runda köttbullar serverade med lingonsylt och potatismos.|Kött
+Oxfilé|Saftig oxfilé med potatisgratäng och rödvinssås.|Kött
+Chokladmousse|En len och krämig chokladmousse toppad med vispad grädde.|Desserter/Kakor
+Vaniljglass med chokladsås|Vaniljglass med varm chokladsås och strössel.|Desserter/Kakor
+Tomatsoppa|En krämig tomat- och basilikasoppa toppad med croutoner.|Soppor
+Linssoppa|En smakrik linssoppa med grönsaker och indiska kryddor.|Soppor
+Champinjonsoppa|En len champinjonsoppa med vitlök och grädde.|Soppor
+Caesarsallad|En klassisk caesarsallad med romansallad, krutonger, kyckling och caesardressing.|Sallader
+Pasta sallad|En pasta sallad med skinka, grönsaker och örtig dressing.|Sallader
+Grillad lax|En saftig bit lax grillad till perfektion med citron och örter.|Fisk
+Fisksoppa|En krämig fisksoppa med morötter, potatis och färsk dill.|Fisk
+Räksallad|En fräsch sallad med saftiga räkor, grönsaker och citrondressing.|Fisk
+hejtitel|hejbeskrivning|hejsan
+Äppelpaj|En äppelpaj med kanel och karamellsås. 1|Desserter/Kakor
+Köttfärssås|Spagetti, köttfärs|Kött
+Sugar no|inga sockerbitar|Sockerfritt
+TestarSocker|TestarSocker|TestarSocker
+MedSocker|MedSockerB|MedSocker
+medsocker2|medsocker2|MedSocker
+nybeskrivning|Nybeskrivnin|MedSocker
+Köttsoppa|Köttig sopppa|Soppor

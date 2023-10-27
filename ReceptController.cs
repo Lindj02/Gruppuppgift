@@ -13,6 +13,7 @@ namespace Gruppuppgift
         private Form1 view;
         private BindingList<Recept> receptsBindingList;
         private User user;
+        
         public ReceptController(Form1 view, BindingList<Recept> receptsBindingList)
         {
             this.view = view;
@@ -83,6 +84,7 @@ namespace Gruppuppgift
             {
                 MessageBox.Show("Vänligen välj ett recept att ta bort.");
             }
+            //ClearTextBoxes(); behövs fixas
         }
         private void SaveDataToFile()
         {
