@@ -25,6 +25,9 @@ namespace Gruppuppgift
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
 
+            //Form properties
+            FormProperties.SetFormProperties(this);
+
         }
 
 
@@ -124,10 +127,10 @@ namespace Gruppuppgift
             }
         }
 
-       // private void btnLogIn_Click(object sender, EventArgs e)
+        // private void btnLogIn_Click(object sender, EventArgs e)
         //{
 
-       // }
+        // }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -315,8 +318,9 @@ namespace Gruppuppgift
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
