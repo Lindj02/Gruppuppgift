@@ -1,6 +1,8 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Jorge Jonathan Pereda ////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+﻿/*┌─────────────────────────────────────────────────────────────────────────────────────┐
+  │                                   Jorge J. Pereda                                   │
+  │                                Azure Cloud Developer                                │
+  │                                    Jensen - 2023                                    │
+  └─────────────────────────────────────────────────────────────────────────────────────┘*/
 
 using System;
 using System.Collections.Generic;
@@ -16,10 +18,10 @@ namespace Gruppuppgift
         public static void SetFormProperties(Form form)
         {
 
-            //Customize form properties
+            /*┌───────────────────────────────────┐
+              │     Customize form properties     │
+              └───────────────────────────────────┘*/
             form.Text = "International Food AB || Gruppupgift 3 || Jensen 2023";
-
-            //form.MaximizeBox = false;
 
         }
 

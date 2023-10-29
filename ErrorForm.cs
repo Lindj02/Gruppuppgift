@@ -1,6 +1,8 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Jorge Jonathan Pereda ////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+﻿/*┌─────────────────────────────────────────────────────────────────────────────────────┐
+  │                                   Jorge J. Pereda                                   │
+  │                                Azure Cloud Developer                                │
+  │                                    Jensen - 2023                                    │
+  └─────────────────────────────────────────────────────────────────────────────────────┘*/
 
 using Microsoft.VisualBasic.Logging;
 using System;
@@ -23,14 +25,16 @@ namespace Gruppuppgift
         {
             InitializeComponent();
 
-            // Assuming you have a DataGridView named dataGridViewLogs on your ErrorForm
             dataGridView1.DataSource = logEntries;
-            //dataGridView1.DataSource = logger.GetLogEntries();
 
-            //Form properties
+            /*┌─────────────────────────┐
+              │     Form properties     │
+              └─────────────────────────┘*/
             LogFormProperties.SetFormProperties(this);
 
-            // Set maximum width
+            /*┌───────────────────────────┐
+              │     Set maximum width     │
+              └───────────────────────────┘*/
             dataGridView1.MaximumSize = new System.Drawing.Size(570, dataGridView1.Height);
 
             
@@ -40,10 +44,13 @@ namespace Gruppuppgift
 
         private void ErrorForm_Load(object sender, EventArgs e)
         {
-            // Customize the appearance or behavior of ErrorForm if needed
-            // Assuming your DataGridView is named dataGridView1
+
+            /*┌───────────────────────────────────────────────────────────┐
+              │     Customize the appearance or behavior of ErrorForm     │
+              └───────────────────────────────────────────────────────────┘*/
             dataGridView1.Columns["timestamp"].Width = (int)(dataGridView1.Width * 0.3);
             dataGridView1.Columns["message"].Width = (int)(dataGridView1.Width * 0.7);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

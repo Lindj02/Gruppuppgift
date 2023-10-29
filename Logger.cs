@@ -1,6 +1,8 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Jorge Jonathan Pereda ////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+﻿/*┌─────────────────────────────────────────────────────────────────────────────────────┐
+  │                                   Jorge J. Pereda                                   │
+  │                                Azure Cloud Developer                                │
+  │                                    Jensen - 2023                                    │
+  └─────────────────────────────────────────────────────────────────────────────────────┘*/
 
 using System;
 using System.Collections.Generic;
@@ -11,15 +13,33 @@ namespace Gruppuppgift
 {
     public class Logger
     {
+
+        /*┌─────────────────────────────────┐
+          │    List to store log entries    │
+          └─────────────────────────────────┘*/
         private List<LogEntry> logEntries;
 
+        /*┌───────────────────────────────────────────┐
+          │    Event to notify when a log is added    │
+          └───────────────────────────────────────────┘*/
         public event EventHandler<LogAddedEventArgs> LogAdded;
 
+        /*┌───────────────────┐
+          │    Constructor    │
+          └───────────────────┘*/
         public Logger()
         {
+
+            /*┌──────────────────────────────────────┐
+              │    Initialize the logEntries list    │
+              └──────────────────────────────────────┘*/
             logEntries = new List<LogEntry>();
+
         }
 
+        /*┌─────────────────┐
+          │    Variables    │
+          └─────────────────┘*/
         public class LogEntry
         {
 
@@ -28,6 +48,9 @@ namespace Gruppuppgift
 
         }
 
+        /*┌────────────────────────────────────┐
+          │    Argument when a log is added    │
+          └────────────────────────────────────┘*/
         public class LogAddedEventArgs : EventArgs
         {
 
@@ -35,7 +58,9 @@ namespace Gruppuppgift
 
         }
 
-
+        /*┌────────────────────────────┐
+          │    Method - add logEntry   │
+          └────────────────────────────┘*/
         public void AddLogEntry(string message)
         {
             logEntries.Add(new LogEntry
@@ -46,11 +71,16 @@ namespace Gruppuppgift
 
             });
 
-            // Trigger the event
+            /*┌─────────────────────────┐
+              │    Trigger the event    │
+              └─────────────────────────┘*/
             LogAdded?.Invoke(this, new LogAddedEventArgs { LogMessage = message });
 
         }
 
+        /*┌────────────────────────────┐
+          │    Method - save to .txt   │
+          └────────────────────────────┘*/
         public void SaveLogsToFile(string filePath)
         {
             try
@@ -70,6 +100,9 @@ namespace Gruppuppgift
             }
         }
 
+        /*┌──────────────────────┐
+          │    Method - getAll   │
+          └──────────────────────┘*/
         public List<LogEntry> GetLogEntries()
         {
             return logEntries;
