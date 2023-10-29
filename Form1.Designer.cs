@@ -274,7 +274,7 @@
             // btnSave
             // 
             btnSave.Location = new Point(323, 677);
-            btnSave.Margin = new Padding(2, 2, 2, 2);
+            btnSave.Margin = new Padding(2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(83, 30);
             btnSave.TabIndex = 0;
@@ -289,7 +289,7 @@
             // btnOpenFIleDialog
             // 
             btnOpenFIleDialog.Location = new Point(259, 146);
-            btnOpenFIleDialog.Margin = new Padding(2, 2, 2, 2);
+            btnOpenFIleDialog.Margin = new Padding(2);
             btnOpenFIleDialog.Name = "btnOpenFIleDialog";
             btnOpenFIleDialog.Size = new Size(116, 20);
             btnOpenFIleDialog.TabIndex = 28;

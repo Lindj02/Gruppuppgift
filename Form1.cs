@@ -12,6 +12,8 @@ namespace Gruppuppgift
         public string filePath = @"..\..\..\recept.txt";
         HashSet<string> categories = new HashSet<string>();
 
+        //Class Logger.cs
+        private Logger logger;
 
         public Form1()
         {
@@ -25,8 +27,18 @@ namespace Gruppuppgift
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
 
+            ///////////////////////////////////////
+            ////////// Jorge - Jensen /////////////
+            ///////////////////////////////////////
+
             //Form properties
             FormProperties.SetFormProperties(this);
+
+            //Error log printer
+            logger = new Logger();
+
+            // Subscribe to the LogAdded event
+            logger.LogAdded += Logger_LogAdded;
 
         }
 
@@ -60,18 +72,43 @@ namespace Gruppuppgift
                 MessageBox.Show("Ett fel uppstod vid inläsning av filen.");
             }
         }
+
+        //jorge-00.00.02
+        private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
+        {
+
+            // Show the ErrorForm with the new log message
+            ErrorForm errorForm = new ErrorForm(e.LogMessage);
+
+            //This will display the form without blocking Form1
+            errorForm.Show();
+
+        }
+
+        //Print the logs in a .txt file.
         private void LogError(Exception ex)
         {
+            string errorTime = $"[{ DateTime.Now}] -";
+
+            string errorMessage = $" {ex.Message}";
+
             string logFilePath = @"..\..\..\ErrorLog.txt";
-            string errorMessage = $"{DateTime.Now}: {ex.Message}";
+
 
             try
             {
-                File.AppendAllText(logFilePath, errorMessage + Environment.NewLine);
+
+                File.AppendAllText(logFilePath, errorTime + errorMessage + Environment.NewLine);
+
+                // Add this line to log the error
+                logger.AddLogEntry(errorMessage);
+
             }
             catch
             {
-                // Hantering om loggfilen inte går att skriva till.
+
+                //If no way to print the error then handle the error
+
             }
         }
 
@@ -227,6 +264,28 @@ namespace Gruppuppgift
         {
             string searchText = txtSearch.Text.ToLower();
 
+            //Testing error logs
+            //This if statement will be deleted before release day.
+            //DO NOT TOUCH THIS!
+            if (searchText.Contains("#") || searchText.Contains("$"))
+            {
+                string errorMessage = "Error: You need to use 'a', 'b', 'c' and not '#' or '$'";
+                LogError(new Exception(errorMessage));
+
+                //Create an instance of Logger
+                Logger logger = new Logger();
+
+                //Simulate an error
+                logger.AddLogEntry(errorMessage);
+
+                //Create an instance of ErrorForm and pass the log entries
+                ErrorForm errorForm = new ErrorForm(logger.GetLogEntries());
+
+                // Show the ErrorForm non-modally
+                errorForm.Show();
+
+                return; // Do not proceed with the search
+            }
 
             var filteredList = new BindingList<Recept>(receptsBindingList
                 .Where(x => x.Title.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || x.Type.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -322,5 +381,7 @@ namespace Gruppuppgift
         {
 
         }
+
+        
     }
 }

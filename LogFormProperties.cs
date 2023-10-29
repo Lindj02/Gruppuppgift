@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace Gruppuppgift
 {
-    internal class FormProperties
+    internal class LogFormProperties
     {
-
         public static void SetFormProperties(Form form)
         {
 
             //Customize form properties
-            form.Text = "International Food AB || Gruppupgift 3 || Jensen 2023";
+            form.Text = "International Food AB || Logs || Jensen 2023";
+            form.MaximumSize = new Size(590, 500);
+            form.MaximizeBox = false;
+
 
             //form.MaximizeBox = false;
 
         }
-
     }
 }
