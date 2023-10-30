@@ -11,6 +11,7 @@ namespace Gruppuppgift
         private BindingList<Recept> receptsBindingList;
         private User user;
         public string filePath = @"..\..\..\recept.txt";
+        public string filePictures = @"..\..\..\Pictures";
         HashSet<string> categories = new HashSet<string>();
 
         //Class Logger.cs
@@ -59,9 +60,11 @@ namespace Gruppuppgift
                         string[] columnNames = rad.Split('|');
                         string title = columnNames[0];
                         string description = columnNames[1];
-                        string type = columnNames[2];
+                        string picturePatch = columnNames[2];
+                        string type = columnNames[3];
+                        
 
-                        Recept recept = new Recept { Title = title, Description = description, Type = type };
+                        Recept recept = new Recept { Title = title, Description = description, PicturePatch = picturePatch, Type = type };
                         receptsBindingList.Add(recept);
                         categories.Add(type);
                     }
@@ -89,7 +92,7 @@ namespace Gruppuppgift
         //Print the logs in a .txt file.
         private void LogError(Exception ex)
         {
-            string errorTime = $"[{ DateTime.Now}] -";
+            string errorTime = $"[{DateTime.Now}] -";
 
             string errorMessage = $" {ex.Message}";
 
@@ -229,22 +232,25 @@ namespace Gruppuppgift
 
 
 
-        public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
+        public void SaveRecept(string Titel, string Description, string PicturePatch, string Type, string selectedCategory)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 if (!string.IsNullOrEmpty(Type))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{Type}");
+                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{Type}");
                 }
                 else if (!string.IsNullOrEmpty(selectedCategory))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{selectedCategory}");
+                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{selectedCategory}");
                 }
             }
             //MessageBox.Show("Du har sparat ett nytt recept");
             UpdateUI();
+            
         }
+
+
         private Recept selectedRecept;
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -256,6 +262,7 @@ namespace Gruppuppgift
                 {
                     txtTitle.Text = selectedRecept.Title;
                     txtDescription1.Text = selectedRecept.Description;
+                    txtBildkälla.Text = selectedRecept.PicturePatch;
                     txtCat.Text = selectedRecept.Type;
                 }
             }
@@ -307,6 +314,7 @@ namespace Gruppuppgift
                 // Uppdatera det valda receptet
                 selectedRecept.Title = txtTitle.Text;
                 selectedRecept.Description = txtDescription1.Text;
+                selectedRecept.PicturePatch = txtBildkälla.Text;
                 selectedRecept.Type = txtCat.Text;
 
                 // Skriv om filen
@@ -317,12 +325,13 @@ namespace Gruppuppgift
             else
             {
                 // Skapa ett nytt recept
-                SaveRecept(txtTitle.Text, txtDescription1.Text, txtCat.Text, comboBox.Text);
+                SaveRecept(txtTitle.Text, txtDescription1.Text, txtBildkälla.Text, txtCat.Text, comboBox.Text);
                 MessageBox.Show("Ett nytt recept har lagts till!");
             }
 
             LoadDataFromFile();
             UpdateUI();
+            SavePictures();
         }
 
         private void txtpicturePath_TextChanged(object sender, EventArgs e)
@@ -332,34 +341,42 @@ namespace Gruppuppgift
 
         private void btnOpenFIleDialog_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp;";
+            if (open.ShowDialog() == DialogResult.OK)
             {
-                // Set the initial directory to C:\
-                openFileDialog.InitialDirectory = "C:\\";
-
-                // Set the title of the dialog
-                openFileDialog.Title = "Open File";
-
-
-                openFileDialog.Filter = "All Files|*.*";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    string selectedFilePath = openFileDialog.FileName;
-
-
-                    MessageBox.Show("Selected file: " + selectedFilePath);
-                }
+                txtBildkälla.Text = open.FileName;
+                pictureBoxRecipe.Image = new Bitmap(open.FileName);
             }
         }
+
+        public void SavePictures()
+        {
+            string destinationFolderPath = filePictures;
+            string sourceFilePath = txtBildkälla.Text;
+
+            try
+            {
+                string fileName = Path.GetFileName(sourceFilePath);
+                string destinationPath = Path.Combine(destinationFolderPath, fileName);
+                File.Copy(sourceFilePath, destinationPath, true);
+                lblpicturePath.Text = "Image File saved successfully!";
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                lblpicturePath.Text = "Error saving image file!";
+            }
+        }
+
+
         private void WriteDataToFile()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 foreach (Recept recept in receptsBindingList)
                 {
-                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PicturePatch}|{recept.Type}");
                 }
             }
         }
@@ -383,6 +400,6 @@ namespace Gruppuppgift
 
         }
 
-        
+
     }
 }

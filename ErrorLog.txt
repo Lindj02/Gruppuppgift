@@ -33,3 +33,13 @@
 [2023-10-29 19:14:24] - Error: You need to use 'a', 'b', 'c' and not '#' or '$'
 [2023-10-29 19:14:37] - Error: You need to use 'a', 'b', 'c' and not '#' or '$'
 [2023-10-29 19:14:53] - Error: You need to use 'a', 'b', 'c' and not '#' or '$'
+[2023-10-30 10:02:20] - The value cannot be an empty string. (Parameter 'sourceFileName')
+[2023-10-30 10:13:57] - Index was outside the bounds of the array.
+[2023-10-30 10:14:16] - Index was outside the bounds of the array.
+[2023-10-30 10:15:11] - Index was outside the bounds of the array.
+[2023-10-30 10:17:40] - Index was outside the bounds of the array.
+[2023-10-30 10:18:58] - Index was outside the bounds of the array.
+[2023-10-30 10:19:34] - Index was outside the bounds of the array.
+[2023-10-30 10:20:52] - Index was outside the bounds of the array.
+[2023-10-30 10:21:50] - Index was outside the bounds of the array.
+[2023-10-30 10:22:10] - Index was outside the bounds of the array.

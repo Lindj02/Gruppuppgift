@@ -54,6 +54,7 @@
             btnSave = new Button();
             openFileDialog1 = new OpenFileDialog();
             btnOpenFIleDialog = new Button();
+            txtBildkälla = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -246,7 +247,7 @@
             // lblpicturePath
             // 
             lblpicturePath.AutoSize = true;
-            lblpicturePath.Location = new Point(206, 146);
+            lblpicturePath.Location = new Point(707, 151);
             lblpicturePath.Name = "lblpicturePath";
             lblpicturePath.Size = new Size(27, 15);
             lblpicturePath.TabIndex = 24;
@@ -288,7 +289,7 @@
             // 
             // btnOpenFIleDialog
             // 
-            btnOpenFIleDialog.Location = new Point(259, 146);
+            btnOpenFIleDialog.Location = new Point(138, 148);
             btnOpenFIleDialog.Margin = new Padding(2);
             btnOpenFIleDialog.Name = "btnOpenFIleDialog";
             btnOpenFIleDialog.Size = new Size(116, 20);
@@ -298,11 +299,19 @@
             btnOpenFIleDialog.Visible = false;
             btnOpenFIleDialog.Click += btnOpenFIleDialog_Click;
             // 
+            // txtBildkälla
+            // 
+            txtBildkälla.Location = new Point(259, 146);
+            txtBildkälla.Name = "txtBildkälla";
+            txtBildkälla.Size = new Size(442, 23);
+            txtBildkälla.TabIndex = 29;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1620, 765);
+            Controls.Add(txtBildkälla);
             Controls.Add(btnOpenFIleDialog);
             Controls.Add(btnSave);
             Controls.Add(txtCat);
@@ -365,5 +374,6 @@
         internal Button btnOpenFIleDialog;
         internal Button btnDelete;
         internal Button btnLogIn;
+        private TextBox txtBildkälla;
     }
 }

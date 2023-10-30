@@ -20,3 +20,5 @@ MedSocker|MedSockerB|MedSocker
 medsocker2|medsocker2|MedSocker
 nybeskrivning|Nybeskrivnin|MedSocker
 Köttsoppa|Köttig sopppa|Soppor
+
+Pasta Carbonara|123456|C:\Users\sviri\Downloads\Pasta Carbonara.jpg|Pasta
