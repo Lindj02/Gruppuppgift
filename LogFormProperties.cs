@@ -23,7 +23,6 @@ namespace Gruppuppgift
             form.Text = "International Food AB || Logs || Jensen 2023";
             form.MaximumSize = new Size(590, 500);
             form.MaximizeBox = false;
-            //form.ControlBox = false;
 
         }
     }
