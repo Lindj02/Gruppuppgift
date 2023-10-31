@@ -93,7 +93,7 @@ namespace Gruppuppgift
             {
                 foreach (Recept recept in receptsBindingList)
                 {
-                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Description}|{recept.Type}");
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PicturePatch}|{recept.Type}");
                 }
             }
         }

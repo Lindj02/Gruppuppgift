@@ -54,7 +54,7 @@
             btnSave = new Button();
             openFileDialog1 = new OpenFileDialog();
             btnOpenFIleDialog = new Button();
-            txtBildkälla = new TextBox();
+            txtPictures = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRecipe).BeginInit();
             SuspendLayout();
@@ -186,6 +186,7 @@
             pictureBoxRecipe.Location = new Point(13, 173);
             pictureBoxRecipe.Name = "pictureBoxRecipe";
             pictureBoxRecipe.Size = new Size(288, 300);
+            pictureBoxRecipe.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxRecipe.TabIndex = 17;
             pictureBoxRecipe.TabStop = false;
             // 
@@ -299,19 +300,19 @@
             btnOpenFIleDialog.Visible = false;
             btnOpenFIleDialog.Click += btnOpenFIleDialog_Click;
             // 
-            // txtBildkälla
+            // txtPictures
             // 
-            txtBildkälla.Location = new Point(259, 146);
-            txtBildkälla.Name = "txtBildkälla";
-            txtBildkälla.Size = new Size(442, 23);
-            txtBildkälla.TabIndex = 29;
+            txtPictures.Location = new Point(259, 146);
+            txtPictures.Name = "txtPictures";
+            txtPictures.Size = new Size(442, 23);
+            txtPictures.TabIndex = 29;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1620, 765);
-            Controls.Add(txtBildkälla);
+            Controls.Add(txtPictures);
             Controls.Add(btnOpenFIleDialog);
             Controls.Add(btnSave);
             Controls.Add(txtCat);
@@ -374,6 +375,6 @@
         internal Button btnOpenFIleDialog;
         internal Button btnDelete;
         internal Button btnLogIn;
-        private TextBox txtBildkälla;
+        private TextBox txtPictures;
     }
 }

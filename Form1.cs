@@ -1,6 +1,6 @@
-
 using Microsoft.VisualBasic.ApplicationServices;
 using System.ComponentModel;
+using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
@@ -14,8 +14,6 @@ namespace Gruppuppgift
         public string filePictures = @"..\..\..\Pictures";
         HashSet<string> categories = new HashSet<string>();
 
-        //Class Logger.cs
-        private Logger logger;
 
         public Form1()
         {
@@ -29,18 +27,8 @@ namespace Gruppuppgift
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
 
-            ///////////////////////////////////////
-            ////////// Jorge - Jensen /////////////
-            ///////////////////////////////////////
-
             //Form properties
             FormProperties.SetFormProperties(this);
-
-            //Error log printer
-            logger = new Logger();
-
-            // Subscribe to the LogAdded event
-            logger.LogAdded += Logger_LogAdded;
 
         }
 
@@ -62,7 +50,6 @@ namespace Gruppuppgift
                         string description = columnNames[1];
                         string picturePatch = columnNames[2];
                         string type = columnNames[3];
-                        
 
                         Recept recept = new Recept { Title = title, Description = description, PicturePatch = picturePatch, Type = type };
                         receptsBindingList.Add(recept);
@@ -77,42 +64,19 @@ namespace Gruppuppgift
             }
         }
 
-        //jorge-00.00.02
-        private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
-        {
 
-            // Show the ErrorForm with the new log message
-            ErrorForm errorForm = new ErrorForm(e.LogMessage);
-
-            //This will display the form without blocking Form1
-            errorForm.Show();
-
-        }
-
-        //Print the logs in a .txt file.
         private void LogError(Exception ex)
         {
-            string errorTime = $"[{DateTime.Now}] -";
-
-            string errorMessage = $" {ex.Message}";
-
             string logFilePath = @"..\..\..\ErrorLog.txt";
-
+            string errorMessage = $"{DateTime.Now}: {ex.Message}";
 
             try
             {
-
-                File.AppendAllText(logFilePath, errorTime + errorMessage + Environment.NewLine);
-
-                // Add this line to log the error
-                logger.AddLogEntry(errorMessage);
-
+                File.AppendAllText(logFilePath, errorMessage + Environment.NewLine);
             }
             catch
             {
-
-                //If no way to print the error then handle the error
-
+                // Hantering om loggfilen inte går att skriva till.
             }
         }
 
@@ -136,6 +100,7 @@ namespace Gruppuppgift
                 foreach (Recept recept in receptsBindingList)
                 {
                     comboBox1.Items.Add(recept.Title);
+
                 }
             }
             else
@@ -247,10 +212,7 @@ namespace Gruppuppgift
             }
             //MessageBox.Show("Du har sparat ett nytt recept");
             UpdateUI();
-            
         }
-
-
         private Recept selectedRecept;
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -262,8 +224,12 @@ namespace Gruppuppgift
                 {
                     txtTitle.Text = selectedRecept.Title;
                     txtDescription1.Text = selectedRecept.Description;
-                    txtBildkälla.Text = selectedRecept.PicturePatch;
+                    pictureBoxRecipe.ImageLocation = selectedRecept.PicturePatch;
                     txtCat.Text = selectedRecept.Type;
+                    
+
+                    //pictureBoxRecipe.Image = Properties.filePictures.GrillladLax;
+
                 }
             }
         }
@@ -272,28 +238,6 @@ namespace Gruppuppgift
         {
             string searchText = txtSearch.Text.ToLower();
 
-            //Testing error logs
-            //This if statement will be deleted before release day.
-            //DO NOT TOUCH THIS!
-            if (searchText.Contains("#") || searchText.Contains("$"))
-            {
-                string errorMessage = "Error: You need to use 'a', 'b', 'c' and not '#' or '$'";
-                LogError(new Exception(errorMessage));
-
-                //Create an instance of Logger
-                Logger logger = new Logger();
-
-                //Simulate an error
-                logger.AddLogEntry(errorMessage);
-
-                //Create an instance of ErrorForm and pass the log entries
-                ErrorForm errorForm = new ErrorForm(logger.GetLogEntries());
-
-                // Show the ErrorForm non-modally
-                errorForm.Show();
-
-                return; // Do not proceed with the search
-            }
 
             var filteredList = new BindingList<Recept>(receptsBindingList
                 .Where(x => x.Title.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || x.Type.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -314,24 +258,24 @@ namespace Gruppuppgift
                 // Uppdatera det valda receptet
                 selectedRecept.Title = txtTitle.Text;
                 selectedRecept.Description = txtDescription1.Text;
-                selectedRecept.PicturePatch = txtBildkälla.Text;
+                selectedRecept.PicturePatch = txtPictures.Text;
                 selectedRecept.Type = txtCat.Text;
 
                 // Skriv om filen
                 WriteDataToFile();
+                
 
                 MessageBox.Show("Receptet har uppdaterats!");
             }
             else
             {
                 // Skapa ett nytt recept
-                SaveRecept(txtTitle.Text, txtDescription1.Text, txtBildkälla.Text, txtCat.Text, comboBox.Text);
+                SaveRecept(txtTitle.Text, txtDescription1.Text, txtPictures.Text, txtCat.Text, comboBox.Text);
                 MessageBox.Show("Ett nytt recept har lagts till!");
             }
-
+            SavePictures();
             LoadDataFromFile();
             UpdateUI();
-            SavePictures();
         }
 
         private void txtpicturePath_TextChanged(object sender, EventArgs e)
@@ -345,15 +289,16 @@ namespace Gruppuppgift
             open.Filter = "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp;";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                txtBildkälla.Text = open.FileName;
+                txtPictures.Text = open.FileName;
                 pictureBoxRecipe.Image = new Bitmap(open.FileName);
             }
         }
 
         public void SavePictures()
         {
+
             string destinationFolderPath = filePictures;
-            string sourceFilePath = txtBildkälla.Text;
+            string sourceFilePath = txtPictures.Text;
 
             try
             {
@@ -368,8 +313,6 @@ namespace Gruppuppgift
                 lblpicturePath.Text = "Error saving image file!";
             }
         }
-
-
         private void WriteDataToFile()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
@@ -399,7 +342,5 @@ namespace Gruppuppgift
         {
 
         }
-
-
     }
 }

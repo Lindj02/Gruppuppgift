@@ -43,3 +43,38 @@
 [2023-10-30 10:20:52] - Index was outside the bounds of the array.
 [2023-10-30 10:21:50] - Index was outside the bounds of the array.
 [2023-10-30 10:22:10] - Index was outside the bounds of the array.
+[2023-10-30 14:08:28] - Index was outside the bounds of the array.
+[2023-10-30 14:11:07] - Index was outside the bounds of the array.
+[2023-10-30 14:12:56] - Index was outside the bounds of the array.
+[2023-10-30 14:14:39] - Index was outside the bounds of the array.
+[2023-10-30 14:17:39] - Index was outside the bounds of the array.
+[2023-10-30 14:23:30] - Index was outside the bounds of the array.
+[2023-10-30 14:26:23] - Index was outside the bounds of the array.
+[2023-10-30 14:27:59] - Index was outside the bounds of the array.
+[2023-10-30 15:11:58] - Index was outside the bounds of the array.
+[2023-10-30 15:13:32] - Index was outside the bounds of the array.
+[2023-10-30 15:17:10] - Index was outside the bounds of the array.
+[2023-10-30 15:18:51] - Index was outside the bounds of the array.
+[2023-10-30 15:21:14] - Index was outside the bounds of the array.
+[2023-10-30 15:22:30] - Index was outside the bounds of the array.
+[2023-10-30 17:29:45] - Index was outside the bounds of the array.
+[2023-10-30 17:31:02] - Index was outside the bounds of the array.
+[2023-10-30 17:44:41] - Index was outside the bounds of the array.
+[2023-10-30 17:46:36] - Index was outside the bounds of the array.
+[2023-10-30 17:47:45] - Index was outside the bounds of the array.
+[2023-10-30 17:59:00] - Index was outside the bounds of the array.
+2023-10-30 21:32:38: Could not find a part of the path 'C:\Users\sviri\source\Gruppuppgift\bin\Debug\Pictures\kanin.jpg'.
+2023-10-30 21:38:07: Could not find a part of the path 'C:\Users\sviri\source\Gruppuppgift\bin\Debug\Pictures\kanin.jpg'.
+2023-10-30 21:51:35: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-10-30 21:52:04: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Köttbullar.jpg' because it is being used by another process.
+2023-10-30 21:52:21: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Oxfile.jpeg' because it is being used by another process.
+2023-10-30 21:52:36: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Chokladmousse.jpg' because it is being used by another process.
+2023-10-30 21:53:22: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Vaniljglass.jpg' because it is being used by another process.
+2023-10-30 21:53:34: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Tomatsoppa.jpg' because it is being used by another process.
+2023-10-30 21:53:47: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Linsoppa.jpg' because it is being used by another process.
+2023-10-30 21:54:11: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Champinjonsoppa.jpg' because it is being used by another process.
+2023-10-30 21:54:27: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Caesarsallad.jpg' because it is being used by another process.
+2023-10-30 21:54:50: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Pasta sallad.jpg' because it is being used by another process.
+2023-10-30 21:57:57: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Fisksoppa.jpg' because it is being used by another process.
+2023-10-30 21:58:10: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Räksallad.jpg' because it is being used by another process.
+2023-10-31 11:29:27: The value cannot be an empty string. (Parameter 'sourceFileName')
