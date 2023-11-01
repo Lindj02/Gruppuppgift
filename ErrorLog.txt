@@ -78,3 +78,6 @@
 2023-10-30 21:57:57: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Fisksoppa.jpg' because it is being used by another process.
 2023-10-30 21:58:10: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Räksallad.jpg' because it is being used by another process.
 2023-10-31 11:29:27: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 11:28:34: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 11:29:24: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 11:30:10: The value cannot be an empty string. (Parameter 'sourceFileName')
