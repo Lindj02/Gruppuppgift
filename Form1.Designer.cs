@@ -81,7 +81,7 @@
             btnAdd.Text = "Rensa";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Visible = false;
-            btnAdd.Click += btnAdd_Click;
+            //btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
@@ -183,13 +183,12 @@
             // 
             // pictureBoxRecipe
             // 
-            pictureBoxRecipe.Location = new Point(12, 244);
+            pictureBoxRecipe.Location = new Point(13, 173);
             pictureBoxRecipe.Name = "pictureBoxRecipe";
             pictureBoxRecipe.Size = new Size(288, 300);
             pictureBoxRecipe.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxRecipe.TabIndex = 17;
             pictureBoxRecipe.TabStop = false;
-            pictureBoxRecipe.Click += pictureBoxRecipe_Click;
             // 
             // txtTitle
             // 
@@ -226,7 +225,7 @@
             btnLogout.Text = "Logga Ut";
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Visible = false;
-            btnLogout.Click += btnLogout_Click;
+            //btnLogout.Click += btnLogout_Click;
             // 
             // label1
             // 
@@ -359,12 +358,12 @@
         private Label lblPassWord;
         private Label lblSearch;
         private Label lblCategory;
-        private ComboBox comboBox;
+        internal ComboBox comboBox;
         private ListBox listBoxRecipe;
         private PictureBox pictureBoxRecipe;
         private TextBox txtTitle;
         private Label lblFoodlList;
-        private ComboBox comboBox1;
+        internal ComboBox comboBox1;
         internal Button btnLogout;
         private Label label1;
         private TextBox txtDescription1;
@@ -376,6 +375,6 @@
         internal Button btnOpenFIleDialog;
         internal Button btnDelete;
         internal Button btnLogIn;
-        private TextBox txtPictures;
+        internal TextBox txtPictures;
     }
 }
