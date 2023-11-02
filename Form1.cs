@@ -191,19 +191,19 @@ namespace Gruppuppgift
         //        }
         //    }
         //}
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    ClearTextBoxes();
-        //}
-        //public void ClearTextBoxes()
-        //{
-        //    txtTitle.Clear();
-        //    txtDescription1.Clear();
-        //    txtCat.Clear();
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+        }
+        public void ClearTextBoxes()
+        {
+            txtTitle.Clear();
+            txtDescription1.Clear();
+            txtCat.Clear();
 
-        //    // Rensa även valt recept för att undvika oavsiktlig redigering
-        //    selectedRecept = null;
-        //}
+            // Rensa även valt recept för att undvika oavsiktlig redigering
+            selectedRecept = null;
+        }
 
         //private void btnDelete_Click(object sender, EventArgs e)
         //{

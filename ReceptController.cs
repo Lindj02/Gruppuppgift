@@ -100,6 +100,7 @@ namespace Gruppuppgift
             view.SavePictures();
             view.LoadDataFromFile();
             view.UpdateUI();
+            view.ClearTextBoxes();
         }
 
         internal void BtnAdd_Click(object sender, EventArgs e) //Rensa egentligen, fel namn på knappen
@@ -133,7 +134,8 @@ namespace Gruppuppgift
             {
                 MessageBox.Show("Vänligen välj ett recept att ta bort.");
             }
-            //ClearTextBoxes(); behövs fixas
+            
+            view.ClearTextBoxes(); 
         }
         private void SaveDataToFile()
         {
