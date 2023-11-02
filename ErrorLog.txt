@@ -78,3 +78,39 @@
 2023-10-30 21:57:57: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Fisksoppa.jpg' because it is being used by another process.
 2023-10-30 21:58:10: The process cannot access the file 'C:\Users\sviri\source\Gruppuppgift\Pictures\Räksallad.jpg' because it is being used by another process.
 2023-10-31 11:29:27: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 10:12:13: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Chokladmousse.jpg' because it is being used by another process.
+2023-11-01 10:20:14: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttbullar.jpg' because it is being used by another process.
+2023-11-01 10:45:55: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\bin\Debug\net7.0-windows\Köttfärs.jpg'.
+2023-11-01 11:09:21: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\bin\Debug\net7.0-windows\Köttfärs.jpg'.
+2023-11-01 11:14:45: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\bin\Debug\net7.0-windows\Köttfärs.jpg'.
+2023-11-01 11:20:48: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg'.
+2023-11-01 11:26:59: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg'.
+2023-11-01 12:35:07: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Pasta Tomato.jpg'.
+2023-11-01 13:14:20: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg'.
+2023-11-01 13:32:13: Could not find file 'C:\Users\sviri\Source\Repos\Gruppuppgift\bin\Debug\net7.0-windows\Köttfärs.jpg'.
+2023-11-01 13:43:45: Index was outside the bounds of the array.
+2023-11-01 13:45:54: Index was outside the bounds of the array.
+2023-11-01 13:48:47: Index was outside the bounds of the array.
+2023-11-01 13:50:31: Index was outside the bounds of the array.
+2023-11-01 13:51:38: Index was outside the bounds of the array.
+2023-11-01 13:52:22: Index was outside the bounds of the array.
+2023-11-01 14:43:51: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:50:09: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 14:50:24: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 14:50:49: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 14:50:55: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 14:53:06: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:53:26: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:53:35: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:53:54: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:54:08: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\Köttfärs.jpg' because it is being used by another process.
+2023-11-01 14:58:00: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-11-01 14:58:29: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-11-01 14:58:39: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-11-01 14:58:52: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-11-01 14:59:03: The process cannot access the file 'C:\Users\sviri\Source\Repos\Gruppuppgift\Pictures\BiffStroganoff.jpg' because it is being used by another process.
+2023-11-01 15:18:36: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 15:26:13: The value cannot be an empty string. (Parameter 'sourceFileName')
+2023-11-01 18:24:23: Index was outside the bounds of the array.
+2023-11-01 18:24:44: Index was outside the bounds of the array.
+2023-11-01 18:25:32: Index was outside the bounds of the array.

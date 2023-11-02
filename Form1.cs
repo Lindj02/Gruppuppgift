@@ -11,16 +11,14 @@ namespace Gruppuppgift
         private BindingList<Recept> receptsBindingList;
         private User user;
         public string filePath = @"..\..\..\recept.txt";
+
+        //KRISTINA
         public string filePictures = @"..\..\..\Pictures";
+
         HashSet<string> categories = new HashSet<string>();
-        public TextBox TxtTitle => txtTitle;
-        public TextBox TxtDescription => txtDescription1;
-        public TextBox TxtCat => txtCat;
-        public Recept SelectedRecept { get; set; }
 
         //Class Logger.cs
         private Logger logger;
-
 
         public Form1()
         {
@@ -44,10 +42,11 @@ namespace Gruppuppgift
             // Subscribe to the LogAdded event
             logger.LogAdded += Logger_LogAdded;
 
-
         }
 
-        internal void LoadDataFromFile()
+
+        //KRISTINA
+        private void LoadDataFromFile()
         {
             try
             {
@@ -61,10 +60,10 @@ namespace Gruppuppgift
                         string[] columnNames = rad.Split('|');
                         string title = columnNames[0];
                         string description = columnNames[1];
-                        string picturePatch = columnNames[2];
+                        string pictureName = columnNames[2];
                         string type = columnNames[3];
 
-                        Recept recept = new Recept { Title = title, Description = description, PicturePatch = picturePatch, Type = type };
+                        Recept recept = new Recept { Title = title, Description = description, PictureName = pictureName, Type = type };
                         receptsBindingList.Add(recept);
                         categories.Add(type);
                     }
@@ -76,7 +75,6 @@ namespace Gruppuppgift
                 MessageBox.Show("Ett fel uppstod vid inläsning av filen.");
             }
         }
-
 
         //jorge-00.00.02
         private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
@@ -90,7 +88,7 @@ namespace Gruppuppgift
 
         }
 
-        //Print the logs in a .txt file.
+
         private void LogError(Exception ex)
         {
             string errorTime = $"[{DateTime.Now}] -";
@@ -175,59 +173,90 @@ namespace Gruppuppgift
             }
         }
 
-        //private void btnSearch_Click(object sender, EventArgs e)
+        // private void btnLogIn_Click(object sender, EventArgs e)
         //{
-        //    string searchTerm = txtSearch.Text;
-        //    listBoxRecipe.Items.Clear();
 
-        //    foreach (Recept recept in receptsBindingList)
-        //    {
-        //        if (recept.Title.Contains(searchTerm) || recept.Description.Contains(searchTerm) || recept.Type.Contains(searchTerm))
-        //        {
-        //            listBoxRecipe.Items.Add("Titel: " + recept.Title);
-        //            listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
-        //            listBoxRecipe.Items.Add("Kategori: " + recept.Type);
-        //            listBoxRecipe.Items.Add(""); // Lägger till en tom rad mellan varje recept
-        //        }
-        //    }
-        //}
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    ClearTextBoxes();
-        //}
-        //public void ClearTextBoxes()
-        //{
-        //    txtTitle.Clear();
-        //    txtDescription1.Clear();
-        //    txtCat.Clear();
+        // }
 
-        //    // Rensa även valt recept för att undvika oavsiktlig redigering
-        //    selectedRecept = null;
-        //}
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (user != null)
+            {
+                user.Logout();
+
+                // Göm admin-knapparna
+                btnAdd.Visible = false;
+                btnDelete.Visible = false;
+
+                btnLogIn.Visible = true;
+                btnSave.Visible = false;
+                btnLogout.Visible = false;
+                lblpicturePath.Visible = false;
+
+                lblCat.Visible = false;
+                txtCat.Visible = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearch.Text;
+            listBoxRecipe.Items.Clear();
+
+            foreach (Recept recept in receptsBindingList)
+            {
+                if (recept.Title.Contains(searchTerm) || recept.Description.Contains(searchTerm) || recept.Type.Contains(searchTerm))
+                {
+                    listBoxRecipe.Items.Add("Titel: " + recept.Title);
+                    listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
+                    listBoxRecipe.Items.Add("Kategori: " + recept.Type);
+                    listBoxRecipe.Items.Add(""); // Lägger till en tom rad mellan varje recept
+                }
+            }
+        }
+
+        // Öppnar form2.cs, obs används inte längre. Eventuellt använda sig av det när gör nytt recept.
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+        }
+        public void ClearTextBoxes()
+        {
+            txtTitle.Clear();
+            txtDescription1.Clear();
+            txtCat.Clear();
+
+            // Rensa även valt recept för att undvika oavsiktlig redigering
+            selectedRecept = null;
+        }
 
         //private void btnDelete_Click(object sender, EventArgs e)
         //{
 
         //}
-        public void SaveRecept(string Titel, string Description, string PicturePatch, string Type, string selectedCategory)
+
+
+        //KRISTINA
+        public void SaveRecept(string Titel, string Description, string PictureName, string Type, string selectedCategory)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 if (!string.IsNullOrEmpty(Type))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{Type}");
+                    writer.WriteLine($"{Titel}|{Description}|{PictureName}|{Type}");
                 }
                 else if (!string.IsNullOrEmpty(selectedCategory))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{selectedCategory}");
+                    writer.WriteLine($"{Titel}|{Description}|{PictureName}|{selectedCategory}");
                 }
             }
             //MessageBox.Show("Du har sparat ett nytt recept");
             UpdateUI();
         }
-
         private Recept selectedRecept;
 
+
+        //KRISTINA
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -237,11 +266,9 @@ namespace Gruppuppgift
                 {
                     txtTitle.Text = selectedRecept.Title;
                     txtDescription1.Text = selectedRecept.Description;
-                    pictureBoxRecipe.ImageLocation = selectedRecept.PicturePatch;
+                    pictureBoxRecipe.Image = Image.FromFile($@"../../../Pictures/{selectedRecept.PictureName}");
                     txtCat.Text = selectedRecept.Type;
 
-
-                    //pictureBoxRecipe.Image = Properties.filePictures.GrillladLax;
 
                 }
             }
@@ -251,28 +278,6 @@ namespace Gruppuppgift
         {
             string searchText = txtSearch.Text.ToLower();
 
-            //Testing error logs
-            //This if statement will be deleted before release day.
-            //DO NOT TOUCH THIS!
-            if (searchText.Contains("#") || searchText.Contains("$"))
-            {
-                string errorMessage = "Error: You need to use 'a', 'b', 'c' and not '#' or '$'";
-                LogError(new Exception(errorMessage));
-
-                //Create an instance of Logger
-                Logger logger = new Logger();
-
-                //Simulate an error
-                logger.AddLogEntry(errorMessage);
-
-                //Create an instance of ErrorForm and pass the log entries
-                ErrorForm errorForm = new ErrorForm(logger.GetLogEntries());
-
-                // Show the ErrorForm non-modally
-                errorForm.Show();
-
-                return; // Do not proceed with the search
-            }
 
             var filteredList = new BindingList<Recept>(receptsBindingList
                 .Where(x => x.Title.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || x.Type.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -286,31 +291,36 @@ namespace Gruppuppgift
 
         }
 
+        //KRISTINA
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            //if (selectedRecept != null)
-            //{
-            //    // Uppdatera det valda receptet
-            //    selectedRecept.Title = txtTitle.Text;
-            //    selectedRecept.Description = txtDescription1.Text;
-            //    selectedRecept.PicturePatch = txtPictures.Text;
-            //    selectedRecept.Type = txtCat.Text;
+            string pictureName = txtPictures.Text.Split("\\").Last();
 
-            //    // Skriv om filen
-            //    WriteDataToFile();
+            if (selectedRecept != null)
+            {
+                // Uppdatera det valda receptet
+                selectedRecept.Title = txtTitle.Text;
+                selectedRecept.Description = txtDescription1.Text;
+                selectedRecept.PictureName = pictureName;
+                //selectedRecept.PicturePatch = txtPictures.Text;
+                selectedRecept.Type = txtCat.Text;
 
 
-            //    MessageBox.Show("Receptet har uppdaterats!");
-            //}
-            //else
-            //{
-            //    // Skapa ett nytt recept
-            //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtPictures.Text, txtCat.Text, comboBox.Text);
-            //    MessageBox.Show("Ett nytt recept har lagts till!");
-            //}
-            //SavePictures();
-            //LoadDataFromFile();
-            //UpdateUI();
+                // Skriv om filen
+                WriteDataToFile();
+
+
+                MessageBox.Show("Receptet har uppdaterats!");
+            }
+            else
+            {
+                // Skapa ett nytt recept
+                SaveRecept(txtTitle.Text, txtDescription1.Text, pictureName, txtCat.Text, comboBox.Text);
+                MessageBox.Show("Ett nytt recept har lagts till!");
+            }
+            SavePictures();
+            LoadDataFromFile();
+            UpdateUI();
         }
 
         private void txtpicturePath_TextChanged(object sender, EventArgs e)
@@ -318,6 +328,7 @@ namespace Gruppuppgift
 
         }
 
+        //KRISTINA
         private void btnOpenFIleDialog_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -329,6 +340,8 @@ namespace Gruppuppgift
             }
         }
 
+
+        ///kIRSTINA
         public void SavePictures()
         {
 
@@ -348,13 +361,14 @@ namespace Gruppuppgift
                 lblpicturePath.Text = "Error saving image file!";
             }
         }
+        //KIRSTINA
         private void WriteDataToFile()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 foreach (Recept recept in receptsBindingList)
                 {
-                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PicturePatch}|{recept.Type}");
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PictureName}|{recept.Type}");
                 }
             }
         }
@@ -374,6 +388,11 @@ namespace Gruppuppgift
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxRecipe_Click(object sender, EventArgs e)
         {
 
         }
