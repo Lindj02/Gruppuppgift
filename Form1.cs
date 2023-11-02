@@ -131,34 +131,36 @@ namespace Gruppuppgift
 
         public void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedCategory = comboBox.SelectedItem.ToString();
-            comboBox1.Items.Clear();
-            BindingList<Recept> filteredRecepts;
-
-            if (selectedCategory == "Alla kategorier")
+            if (comboBox.SelectedItem != null)
             {
-                // Visa alla recept
-                filteredRecepts = new BindingList<Recept>(receptsBindingList);
-                foreach (Recept recept in receptsBindingList)
-                {
-                    comboBox1.Items.Add(recept.Title);
+                string selectedCategory = comboBox.SelectedItem.ToString();
+                comboBox1.Items.Clear();
+                BindingList<Recept> filteredRecepts;
 
-                }
-            }
-            else
-            {
-                // Filtrera recept baserat på kategori
-                filteredRecepts = new BindingList<Recept>(
-                    receptsBindingList.Where(recept => recept.Type == selectedCategory).ToList()
-                );
-                foreach (Recept recept in filteredRecepts)
+                if (selectedCategory == "Alla kategorier")
                 {
-                    comboBox1.Items.Add(recept.Title);
+                    // Visa alla recept
+                    filteredRecepts = new BindingList<Recept>(receptsBindingList);
+                    foreach (Recept recept in receptsBindingList)
+                    {
+                        comboBox1.Items.Add(recept.Title);
+                    }
                 }
-            }
+                else
+                {
+                    // Filtrera recept baserat på kategori
+                    filteredRecepts = new BindingList<Recept>(
+                        receptsBindingList.Where(recept => recept.Type == selectedCategory).ToList()
+                    );
+                    foreach (Recept recept in filteredRecepts)
+                    {
+                        comboBox1.Items.Add(recept.Title);
+                    }
+                }
 
-            // Uppdatera DataGridView med filtrerade recept
-            dataGridView1.DataSource = filteredRecepts;
+                // Uppdatera DataGridView med filtrerade recept
+                dataGridView1.DataSource = filteredRecepts;
+            }
         }
 
 
@@ -223,7 +225,11 @@ namespace Gruppuppgift
                 }
             }
             //MessageBox.Show("Du har sparat ett nytt recept");
-            UpdateUI();
+            // Now, create a new Recept and add it to the binding list
+            Recept newRecept = new Recept { Title = Titel, Description = Description, PicturePatch = PicturePatch, Type = Type };
+            receptsBindingList.Add(newRecept);
+
+            UpdateUI(); // Update the UI with the new data
         }
 
         private Recept selectedRecept;
@@ -256,22 +262,31 @@ namespace Gruppuppgift
             //DO NOT TOUCH THIS!
             if (searchText.Contains("#") || searchText.Contains("$"))
             {
-                string errorMessage = "Error: You need to use 'a', 'b', 'c' and not '#' or '$'";
-                LogError(new Exception(errorMessage));
 
-                //Create an instance of Logger
-                Logger logger = new Logger();
+                //Defined in Logger.cs
+                string errorMessage = "error_001"; 
+                string errorMsg = logger.GetErrorMessage(errorMessage);
 
-                //Simulate an error
-                logger.AddLogEntry(errorMessage);
+                if (errorMsg != null)
+                {
 
-                //Create an instance of ErrorForm and pass the log entries
-                ErrorForm errorForm = new ErrorForm(logger.GetLogEntries());
+                    LogError(new Exception(errorMsg));
+                    logger.AddLogEntry(errorMsg);
 
-                // Show the ErrorForm non-modally
-                errorForm.Show();
+                    ErrorForm errorForm = new ErrorForm(logger.GetLogEntries());
+                    errorForm.Show();
 
-                return; // Do not proceed with the search
+                    //Do not proceed with the search
+                    return; 
+
+                }
+                else
+                {
+
+                    //Handle case where error message is not found
+
+                }
+
             }
 
             var filteredList = new BindingList<Recept>(receptsBindingList
@@ -288,29 +303,19 @@ namespace Gruppuppgift
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            //if (selectedRecept != null)
-            //{
-            //    // Uppdatera det valda receptet
-            //    selectedRecept.Title = txtTitle.Text;
-            //    selectedRecept.Description = txtDescription1.Text;
-            //    selectedRecept.PicturePatch = txtPictures.Text;
-            //    selectedRecept.Type = txtCat.Text;
-
-            //    // Skriv om filen
-            //    WriteDataToFile();
-
-
-            //    MessageBox.Show("Receptet har uppdaterats!");
-            //}
-            //else
-            //{
-            //    // Skapa ett nytt recept
-            //    SaveRecept(txtTitle.Text, txtDescription1.Text, txtPictures.Text, txtCat.Text, comboBox.Text);
-            //    MessageBox.Show("Ett nytt recept har lagts till!");
-            //}
-            //SavePictures();
-            //LoadDataFromFile();
-            //UpdateUI();
+            ButtonHandlers.SaveButton_Click(
+                selectedRecept,
+                txtTitle.Text,
+                txtDescription1.Text,
+                txtPictures.Text,
+                txtCat.Text,
+                comboBox.Text,
+                WriteDataToFile,
+                SaveRecept,
+                SavePictures,
+                LoadDataFromFile,
+                UpdateUI
+            );
         }
 
         private void txtpicturePath_TextChanged(object sender, EventArgs e)
@@ -348,7 +353,7 @@ namespace Gruppuppgift
                 lblpicturePath.Text = "Error saving image file!";
             }
         }
-        private void WriteDataToFile()
+        public void WriteDataToFile()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {

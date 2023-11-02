@@ -78,29 +78,31 @@ namespace Gruppuppgift
 
         internal void BtnSave_Click(object sender, EventArgs e)
         {
-            if (view.SelectedRecept != null)
-            {
-                // Uppdatera det valda receptet
-                view.SelectedRecept.Title = view.TxtTitle.Text;
-                view.SelectedRecept.Description = view.TxtDescription.Text;
-                view.SelectedRecept.PicturePatch = view.txtPictures.Text;
-                view.SelectedRecept.Type = view.TxtCat.Text;
 
-                // Skriv om filen
-                SaveDataToFile();
+            //if (view.SelectedRecept != null)
+            //{
+            //    // Uppdatera det valda receptet
+            //    view.SelectedRecept.Title = view.TxtTitle.Text;
+            //    view.SelectedRecept.Description = view.TxtDescription.Text;
+            //    view.SelectedRecept.PicturePatch = view.txtPictures.Text;
+            //    view.SelectedRecept.Type = view.txtCat.Text;
 
-                MessageBox.Show("Receptet har uppdaterats!");
-            }
-            else
-            {
-                // Skapa ett nytt recept
-                view.SaveRecept(view.TxtTitle.Text, view.TxtDescription.Text, view.txtPictures.Text, view.TxtCat.Text, view.comboBox.Text);
-                MessageBox.Show("Ett nytt recept har lagts till!");
-            }
-            view.SavePictures();
-            view.LoadDataFromFile();
-            view.UpdateUI();
-            view.ClearTextBoxes();
+            //    // Skriv om filen
+            //    view.WriteDataToFile();
+
+
+            //    MessageBox.Show("Receptet har uppdaterats!");
+            //}
+            //else
+            //{
+            //    // Skapa ett nytt recept
+            //    view.SaveRecept(view.TxtTitle.Text, view.TxtDescription.Text, view.txtPictures.Text, view.txtCat.Text, view.comboBox.Text);
+            //    MessageBox.Show("Ett nytt recept har lagts till!");
+            //}
+            //view.SavePictures();
+            //view.LoadDataFromFile();
+            //view.UpdateUI();
+
         }
 
         internal void BtnAdd_Click(object sender, EventArgs e) //Rensa egentligen, fel namn på knappen
@@ -137,6 +139,7 @@ namespace Gruppuppgift
             
             view.ClearTextBoxes(); 
         }
+
         private void SaveDataToFile()
         {
             string filePath = view.filePath;
