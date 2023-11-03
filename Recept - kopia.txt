@@ -1,10 +1,18 @@
 Biff Stroganoff|En härlig rätt med biff, lök, champinjoner och gräddfil.|Kött
-Köttbullar|Små, runda köttbullar serverade med lingonsylt och potatismos.||Kött
+Köttbullar|Små, runda köttbullar serverade med lingonsylt och potatismos.|Kött
 Oxfilé|Saftig oxfilé med potatisgratäng och rödvinssås.|Kött
 Chokladmousse|En len och krämig chokladmousse toppad med vispad grädde.|Desserter/Kakor
+Äppelpaj|En äppelpaj med kanel och karamellsås.|Desserter/Kakor
 Vaniljglass med chokladsås|Vaniljglass med varm chokladsås och strössel.|Desserter/Kakor
 Tomatsoppa|En krämig tomat- och basilikasoppa toppad med croutoner.|Soppor
 Linssoppa|En smakrik linssoppa med grönsaker och indiska kryddor.|Soppor
 Champinjonsoppa|En len champinjonsoppa med vitlök och grädde.|Soppor
 Caesarsallad|En klassisk caesarsallad med romansallad, krutonger, kyckling och caesardressing.|Sallader
+Grekisk sallad|En fräsch grekisk sallad med fetaost, oliver, gurka och tomat.|Sallader
 Pasta sallad|En pasta sallad med skinka, grönsaker och örtig dressing.|Sallader
+Grillad lax|En saftig bit lax grillad till perfektion med citron och örter.|Fisk
+Fisksoppa|En krämig fisksoppa med morötter, potatis och färsk dill.|Fisk
+Räksallad|En fräsch sallad med saftiga räkor, grönsaker och citrondressing.|Fisk1
+köttigt|Sallader
+köttigt|Sallader
+köttigt|Sallader

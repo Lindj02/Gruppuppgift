@@ -10,7 +10,7 @@ namespace Gruppuppgift
     {
         private BindingList<Recept> receptsBindingList;
         private User user;
-        public string filePath = @"..\..\..\recept.txt";
+        public string filePath = @"..\..\..\Recept.txt";
         HashSet<string> categories = new HashSet<string>();
         public HashSet<string> Categories
         {
