@@ -1,10 +1,4 @@
-﻿/*┌─────────────────────────────────────────────────────────────────────────────────────┐
-  │                                   Jorge J. Pereda                                   │
-  │                                Azure Cloud Developer                                │
-  │                                    Jensen - 2023                                    │
-  └─────────────────────────────────────────────────────────────────────────────────────┘*/
-
-using Microsoft.VisualBasic.Logging;
+﻿using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
