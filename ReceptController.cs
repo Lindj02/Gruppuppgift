@@ -24,7 +24,6 @@ namespace Gruppuppgift
             view.btnLogout.Click += BtnLogout_Click;
             view.btnDelete.Click += BtnDelete_Click;
             view.btnAdd.Click += BtnAdd_Click;
-            view.btnSave.Click += BtnSave_Click;
         }
 
 
@@ -43,13 +42,11 @@ namespace Gruppuppgift
                 view.btnDelete.Visible = true;
 
                 view.btnLogout.Visible = true;
-                view.lblpicturePath.Visible = true;
 
                 view.lblCat.Visible = true;
                 view.txtCat.Visible = true;
                 view.btnLogIn.Visible = false;
                 view.btnSave.Visible = true;
-                //view.btnOpenFIleDialog.Visible = true;
                 MessageBox.Show("Du är nu inloggad och kan ändra recept");
                 view.txtUserName.Text = "";
                 view.txtPassword.Text = "";
@@ -70,40 +67,12 @@ namespace Gruppuppgift
                 view.btnLogIn.Visible = true;
                 view.btnSave.Visible = false;
                 view.btnLogout.Visible = false;
-                view.lblpicturePath.Visible = false;
                 view.lblCat.Visible = false;
                 view.txtCat.Visible = false;
             }
         }
 
-        internal void BtnSave_Click(object sender, EventArgs e)
-        {
-
-            //if (view.SelectedRecept != null)
-            //{
-            //    // Uppdatera det valda receptet
-            //    view.SelectedRecept.Title = view.TxtTitle.Text;
-            //    view.SelectedRecept.Description = view.TxtDescription.Text;
-            //    view.SelectedRecept.PicturePatch = view.txtPictures.Text;
-            //    view.SelectedRecept.Type = view.txtCat.Text;
-
-            //    // Skriv om filen
-            //    view.WriteDataToFile();
-
-
-            //    MessageBox.Show("Receptet har uppdaterats!");
-            //}
-            //else
-            //{
-            //    // Skapa ett nytt recept
-            //    view.SaveRecept(view.TxtTitle.Text, view.TxtDescription.Text, view.txtPictures.Text, view.txtCat.Text, view.comboBox.Text);
-            //    MessageBox.Show("Ett nytt recept har lagts till!");
-            //}
-            //view.SavePictures();
-            //view.LoadDataFromFile();
-            //view.UpdateUI();
-
-        }
+       
 
         internal void BtnAdd_Click(object sender, EventArgs e) //Rensa egentligen, fel namn på knappen
         {
@@ -157,7 +126,7 @@ namespace Gruppuppgift
             {
                 foreach (Recept recept in receptsBindingList)
                 {
-                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PicturePatch}|{recept.Type}");
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
                 }
             }
         }

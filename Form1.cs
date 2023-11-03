@@ -11,7 +11,6 @@ namespace Gruppuppgift
         private BindingList<Recept> receptsBindingList;
         private User user;
         public string filePath = @"..\..\..\recept.txt";
-        public string filePictures = @"..\..\..\Pictures";
         HashSet<string> categories = new HashSet<string>();
         public HashSet<string> Categories
         {
@@ -38,8 +37,6 @@ namespace Gruppuppgift
             this.WindowState = FormWindowState.Maximized;
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
-            dataGridView1.Columns["PicturePatch"].Visible = false;
-            dataGridView1.Columns["PictureName"].Visible = false;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -55,35 +52,6 @@ namespace Gruppuppgift
             logger.LogAdded += Logger_LogAdded;
         }
 
-        internal void LoadDataFromFile()
-        {
-            try
-            {
-                receptsBindingList.Clear();
-
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string rad;
-                    while ((rad = reader.ReadLine()) != null)
-                    {
-                        string[] columnNames = rad.Split('|');
-                        string title = columnNames[0];
-                        string description = columnNames[1];
-                        string picturePatch = columnNames[2];
-                        string type = columnNames[3];
-
-                        Recept recept = new Recept { Title = title, Description = description, PicturePatch = picturePatch, Type = type };
-                        receptsBindingList.Add(recept);
-                        categories.Add(type);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError(ex);
-                MessageBox.Show("Ett fel uppstod vid inläsning av filen.");
-            }
-        }
 
         private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
         {
@@ -135,17 +103,13 @@ namespace Gruppuppgift
             if (comboBox.SelectedItem != null)
             {
                 string selectedCategory = comboBox.SelectedItem.ToString();
-                comboBox1.Items.Clear();
                 BindingList<Recept> filteredRecepts;
 
                 if (selectedCategory == "Alla kategorier")
                 {
                     // Visa alla recept
                     filteredRecepts = new BindingList<Recept>(receptsBindingList);
-                    foreach (Recept recept in receptsBindingList)
-                    {
-                        comboBox1.Items.Add(recept.Title);
-                    }
+                   
                 }
                 else
                 {
@@ -153,10 +117,7 @@ namespace Gruppuppgift
                     filteredRecepts = new BindingList<Recept>(
                         receptsBindingList.Where(recept => recept.Type == selectedCategory).ToList()
                     );
-                    foreach (Recept recept in filteredRecepts)
-                    {
-                        comboBox1.Items.Add(recept.Title);
-                    }
+                   
                 }
 
                 // Uppdatera DataGridView med filtrerade recept
@@ -166,39 +127,7 @@ namespace Gruppuppgift
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedRecipeTitle = comboBox1.SelectedItem.ToString();
-            dataGridView1.DataSource = null;
 
-            var selectedRecept = receptsBindingList.FirstOrDefault(recept => recept.Title == selectedRecipeTitle);
-
-            if (selectedRecept != null)
-            {
-                dataGridView1.DataSource = new BindingList<Recept> { selectedRecept };
-            }
-        }
-
-        //private void btnSearch_Click(object sender, EventArgs e)
-        //{
-        //    string searchTerm = txtSearch.Text;
-        //    listBoxRecipe.Items.Clear();
-
-        //    foreach (Recept recept in receptsBindingList)
-        //    {
-        //        if (recept.Title.Contains(searchTerm) || recept.Description.Contains(searchTerm) || recept.Type.Contains(searchTerm))
-        //        {
-        //            listBoxRecipe.Items.Add("Titel: " + recept.Title);
-        //            listBoxRecipe.Items.Add("Beskrivning: " + recept.Description);
-        //            listBoxRecipe.Items.Add("Kategori: " + recept.Type);
-        //            listBoxRecipe.Items.Add(""); // Lägger till en tom rad mellan varje recept
-        //        }
-        //    }
-        //}
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            ClearTextBoxes();
-        }
         public void ClearTextBoxes()
         {
             txtTitle.Clear();
@@ -209,25 +138,21 @@ namespace Gruppuppgift
             selectedRecept = null;
         }
 
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-
-        //}
-        public void SaveRecept(string Titel, string Description, string PicturePatch, string Type, string selectedCategory)
+        public void SaveRecept(string Titel, string Description, string Type, string selectedCategory)
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 if (!string.IsNullOrEmpty(Type))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{Type}");
+                    writer.WriteLine($"{Titel}|{Description}|{Type}");
                 }
                 else if (!string.IsNullOrEmpty(selectedCategory))
                 {
-                    writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{selectedCategory}");
+                    writer.WriteLine($"{Titel}|{Description}{selectedCategory}");
                 }
             }
             // Skapa ett nytt Recept och lägg till det i BindingList
-            Recept newRecept = new Recept { Title = Titel, Description = Description, PicturePatch = PicturePatch, Type = Type ?? selectedCategory };
+            Recept newRecept = new Recept { Title = Titel, Description = Description, Type = Type ?? selectedCategory };
             receptsBindingList.Add(newRecept);
 
             // Lägg till den nya kategorin om den inte redan finns
@@ -259,12 +184,7 @@ namespace Gruppuppgift
                 {
                     txtTitle.Text = selectedRecept.Title;
                     txtDescription1.Text = selectedRecept.Description;
-                    pictureBoxRecipe.ImageLocation = selectedRecept.PicturePatch;
                     txtCat.Text = selectedRecept.Type;
-
-
-                    //pictureBoxRecipe.Image = Properties.filePictures.GrillladLax;
-
                 }
             }
         }
@@ -312,10 +232,6 @@ namespace Gruppuppgift
             dataGridView1.DataSource = filteredList;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
@@ -323,59 +239,52 @@ namespace Gruppuppgift
                 selectedRecept,
                 txtTitle.Text,
                 txtDescription1.Text,
-                txtPictures.Text,
                 txtCat.Text,
                 comboBox.Text,
                 WriteDataToFile,
                 SaveRecept,
-                SavePictures,
                 LoadDataFromFile,
                 UpdateUI
             );
         }
 
-        private void txtpicturePath_TextChanged(object sender, EventArgs e)
+
+        internal void LoadDataFromFile()
         {
-
-        }
-
-        private void btnOpenFIleDialog_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp;";
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                txtPictures.Text = open.FileName;
-                pictureBoxRecipe.Image = new Bitmap(open.FileName);
-            }
-        }
-
-        public void SavePictures()
-        {
-
-            string destinationFolderPath = filePictures;
-            string sourceFilePath = txtPictures.Text;
-
             try
             {
-                string fileName = Path.GetFileName(sourceFilePath);
-                string destinationPath = Path.Combine(destinationFolderPath, fileName);
-                File.Copy(sourceFilePath, destinationPath, true);
-                lblpicturePath.Text = "Image File saved successfully!";
+                receptsBindingList.Clear();
+
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string rad;
+                    while ((rad = reader.ReadLine()) != null)
+                    {
+                        string[] columnNames = rad.Split('|');
+                        string title = columnNames[0];
+                        string description = columnNames[1];
+                        string type = columnNames[2];
+
+                        Recept recept = new Recept { Title = title, Description = description, Type = type };
+                        receptsBindingList.Add(recept);
+                        categories.Add(type);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 LogError(ex);
-                lblpicturePath.Text = "Error saving image file!";
+                MessageBox.Show("Ett fel uppstod vid inläsning av filen.");
             }
         }
+
         public void WriteDataToFile()
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 foreach (Recept recept in receptsBindingList)
                 {
-                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.PicturePatch}|{recept.Type}");
+                    writer.WriteLine($"{recept.Title}|{recept.Description}|{recept.Type}");
                 }
             }
         }
@@ -386,32 +295,10 @@ namespace Gruppuppgift
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = receptsBindingList;
 
-            dataGridView1.Columns["PicturePatch"].Visible = false;
-            dataGridView1.Columns["PictureName"].Visible = false;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            comboBox1.Items.Clear();
-            foreach (Recept recept in receptsBindingList)
-            {
-                comboBox1.Items.Add(recept.Title);
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTitle_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

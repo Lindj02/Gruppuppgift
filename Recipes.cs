@@ -11,8 +11,6 @@ namespace Gruppuppgift
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public string PicturePatch { get; set; } // Länk till bilder
-        public string PictureName { get; set; }
         public string Type { get; set; } // Typer av recept . 
     }
     
