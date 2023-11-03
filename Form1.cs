@@ -33,7 +33,12 @@ namespace Gruppuppgift
             this.WindowState = FormWindowState.Maximized;
             // Sätt DataGridView's DataSource till receptsBindingList
             dataGridView1.DataSource = receptsBindingList;
-
+            dataGridView1.Columns["PicturePatch"].Visible = false;
+            dataGridView1.Columns["PictureName"].Visible = false;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
             //Form properties
             FormProperties.SetFormProperties(this);
 
@@ -78,7 +83,7 @@ namespace Gruppuppgift
         }
 
 
-        //jorge-00.00.02
+
         private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
         {
 
@@ -160,8 +165,8 @@ namespace Gruppuppgift
 
                 // Uppdatera DataGridView med filtrerade recept
                 dataGridView1.DataSource = filteredRecepts;
-                comboBox.Items.Clear();
-                comboBox.Items.AddRange(categories.ToArray());
+                //comboBox.Items.Clear();
+                //comboBox.Items.AddRange(categories.ToArray());
             }
         }
 
@@ -280,7 +285,7 @@ namespace Gruppuppgift
             {
 
                 //Defined in Logger.cs
-                string errorMessage = "error_001"; 
+                string errorMessage = "error_001";
                 string errorMsg = logger.GetErrorMessage(errorMessage);
 
                 if (errorMsg != null)
@@ -293,7 +298,7 @@ namespace Gruppuppgift
                     errorForm.Show();
 
                     //Do not proceed with the search
-                    return; 
+                    return;
 
                 }
                 else
@@ -385,6 +390,12 @@ namespace Gruppuppgift
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = receptsBindingList;
 
+            dataGridView1.Columns["PicturePatch"].Visible = false;
+            dataGridView1.Columns["PictureName"].Visible = false;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
             comboBox1.Items.Clear();
             foreach (Recept recept in receptsBindingList)
             {
@@ -392,9 +403,20 @@ namespace Gruppuppgift
             }
 
 
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
         {
 
         }
