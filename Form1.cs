@@ -109,7 +109,7 @@ namespace Gruppuppgift
                 {
                     // Visa alla recept
                     filteredRecepts = new BindingList<Recept>(receptsBindingList);
-                   
+
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace Gruppuppgift
                     filteredRecepts = new BindingList<Recept>(
                         receptsBindingList.Where(recept => recept.Type == selectedCategory).ToList()
                     );
-                   
+
                 }
 
                 // Uppdatera DataGridView med filtrerade recept
@@ -299,6 +299,11 @@ namespace Gruppuppgift
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
