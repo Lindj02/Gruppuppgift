@@ -49,7 +49,7 @@ namespace Gruppuppgift
                 view.txtCat.Visible = true;
                 view.btnLogIn.Visible = false;
                 view.btnSave.Visible = true;
-                view.btnOpenFIleDialog.Visible = true;
+                //view.btnOpenFIleDialog.Visible = true;
                 MessageBox.Show("Du är nu inloggad och kan ändra recept");
                 view.txtUserName.Text = "";
                 view.txtPassword.Text = "";
@@ -126,9 +126,18 @@ namespace Gruppuppgift
                     // Uppdatera UI direkt efter borttagning
                     view.UpdateUI();
 
+                    // Ta bort kategorin om det inte finns några recept kvar i den
+                    string categoryToDelete = selectedRecept.Type;
+                    bool hasRecipesInCategory = receptsBindingList.Any(recept => recept.Type == categoryToDelete);
+
+                    if (!hasRecipesInCategory)
+                    {
+                        view.Categories.Remove(categoryToDelete); // Använd Categories-egenskapen
+                        view.UpdateCategoriesComboBox(); // Uppdatera ComboBox för kategorier
+                    }
+
                     // Skriv nu om hela filen med den uppdaterade listan
                     SaveDataToFile();
-
                     MessageBox.Show("Receptet har tagits bort!");
                 }
             }
@@ -136,9 +145,10 @@ namespace Gruppuppgift
             {
                 MessageBox.Show("Vänligen välj ett recept att ta bort.");
             }
-            
-            view.ClearTextBoxes(); 
+
+            view.ClearTextBoxes();
         }
+
 
         private void SaveDataToFile()
         {

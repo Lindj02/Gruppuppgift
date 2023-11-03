@@ -13,6 +13,12 @@ namespace Gruppuppgift
         public string filePath = @"..\..\..\recept.txt";
         public string filePictures = @"..\..\..\Pictures";
         HashSet<string> categories = new HashSet<string>();
+        public HashSet<string> Categories
+        {
+            get { return categories; }
+            set { categories = value; }
+        }
+
         public TextBox TxtTitle => txtTitle;
         public TextBox TxtDescription => txtDescription1;
         public TextBox TxtCat => txtCat;
@@ -20,7 +26,6 @@ namespace Gruppuppgift
 
         //Class Logger.cs
         private Logger logger;
-
 
         public Form1()
         {
@@ -48,8 +53,6 @@ namespace Gruppuppgift
 
             // Subscribe to the LogAdded event
             logger.LogAdded += Logger_LogAdded;
-
-
         }
 
         internal void LoadDataFromFile()
@@ -82,17 +85,13 @@ namespace Gruppuppgift
             }
         }
 
-
-
         private void Logger_LogAdded(object sender, Logger.LogAddedEventArgs e)
         {
-
             // Show the ErrorForm with the new log message
             ErrorForm errorForm = new ErrorForm(e.LogMessage);
 
             //This will display the form without blocking Form1
             errorForm.Show();
-
         }
 
         //Print the logs in a .txt file.
@@ -103,7 +102,6 @@ namespace Gruppuppgift
             string errorMessage = $" {ex.Message}";
 
             string logFilePath = @"......\ErrorLog.txt";
-
 
             try
             {
@@ -132,8 +130,6 @@ namespace Gruppuppgift
         {
 
         }
-
-
         public void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox.SelectedItem != null)
@@ -169,7 +165,6 @@ namespace Gruppuppgift
                 //comboBox.Items.AddRange(categories.ToArray());
             }
         }
-
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -246,7 +241,7 @@ namespace Gruppuppgift
 
             UpdateUI(); // Uppdatera UI med den nya datan
         }
-        private void UpdateCategoriesComboBox()
+        public void UpdateCategoriesComboBox()
         {
             comboBox.Items.Clear();
             comboBox.Items.AddRange(categories.ToArray());
@@ -384,6 +379,7 @@ namespace Gruppuppgift
                 }
             }
         }
+
         internal void UpdateUI()
         {
             // Uppdatera DataGridView
@@ -401,9 +397,6 @@ namespace Gruppuppgift
             {
                 comboBox1.Items.Add(recept.Title);
             }
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
