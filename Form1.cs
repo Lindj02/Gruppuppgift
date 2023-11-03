@@ -160,6 +160,8 @@ namespace Gruppuppgift
 
                 // Uppdatera DataGridView med filtrerade recept
                 dataGridView1.DataSource = filteredRecepts;
+                comboBox.Items.Clear();
+                comboBox.Items.AddRange(categories.ToArray());
             }
         }
 
@@ -224,12 +226,26 @@ namespace Gruppuppgift
                     writer.WriteLine($"{Titel}|{Description}|{PicturePatch}|{selectedCategory}");
                 }
             }
-            //MessageBox.Show("Du har sparat ett nytt recept");
-            // Now, create a new Recept and add it to the binding list
-            Recept newRecept = new Recept { Title = Titel, Description = Description, PicturePatch = PicturePatch, Type = Type };
+            // Skapa ett nytt Recept och lägg till det i BindingList
+            Recept newRecept = new Recept { Title = Titel, Description = Description, PicturePatch = PicturePatch, Type = Type ?? selectedCategory };
             receptsBindingList.Add(newRecept);
 
-            UpdateUI(); // Update the UI with the new data
+            // Lägg till den nya kategorin om den inte redan finns
+            bool categoryAdded = categories.Add(Type ?? selectedCategory);
+
+            if (categoryAdded)
+            {
+                // Uppdatera ComboBox om en ny kategori har lagts till
+                UpdateCategoriesComboBox();
+            }
+
+            UpdateUI(); // Uppdatera UI med den nya datan
+        }
+        private void UpdateCategoriesComboBox()
+        {
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(categories.ToArray());
+            comboBox.SelectedIndex = comboBox.Items.Count - 1; // Välj den nyligen tillagda kategorin
         }
 
         private Recept selectedRecept;
